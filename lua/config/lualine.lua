@@ -1,7 +1,7 @@
 -- vim.cmd[[set sessionoptions+=tabpages,globals]]--タブ情報とグローバル変数をセッション保存
 -- vim.cmd[[set sessionoptions-=blank]]--空ファイルをセッションに保存しない
-require 'tabline'.setup {enable=false}--tablineの設定は無効化
-require'lualine'.setup {
+-- require 'tabline'.setup{enable=false}--tablineの設定は無効化
+require'lualine'.setup{
   options = {
     icons_enabled = true,
     theme = 'onedark',
@@ -18,14 +18,6 @@ require'lualine'.setup {
     lualine_y = {'progress'},
     lualine_z = {'location'}
   },
-  inactive_sections = {
-    lualine_a = {},
-    lualine_b = {},
-    lualine_c = {'filename'},
-    lualine_x = {'location'},
-    lualine_y = {},
-    lualine_z = {}
-  },
   -- tabline = {
 	  -- lualine_a={},
 	  -- lualine_b={},
@@ -34,5 +26,13 @@ require'lualine'.setup {
 	  -- luailne_y={},
 	  -- lualine_z={}
   -- },
-  extensions = {'fern','fugitive','toggleterm'}--一部の拡張機能に合わせて表示を変更
+  inactive_sections = {
+    lualine_a = {},
+    lualine_b = {},
+    lualine_c = {'filename'},
+    lualine_x = {'location'},
+    lualine_y = {},
+    lualine_z = {}
+  },
+  extensions = {'nvim-tree','fugitive','toggleterm'}--一部の拡張機能に合わせて表示を変更
 }
