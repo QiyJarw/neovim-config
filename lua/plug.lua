@@ -23,6 +23,8 @@ Plug 'nvim-lualine/lualine.nvim'
 Plug 'nvim-lua/lsp-status.nvim'
 Plug 'folke/trouble.nvim'
 " Plug 'kdheepak/tabline.nvim'
+Plug 'rmagatti/auto-session',
+Plug 'rmagatti/session-lens',
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-surround'
 Plug 'alvan/vim-closetag'
