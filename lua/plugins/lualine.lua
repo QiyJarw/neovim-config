@@ -13,10 +13,10 @@ require'lualine'.setup{
   sections = {
     lualine_a = {'mode'},
     lualine_b = {'branch', 'diff', 'diagnostics'},
-    lualine_c = {'filename',require('auto-session-library').current_session_name},
+    lualine_c = {'filename',require('auto-session-library').current_session_name },
     lualine_x = {'encoding', 'fileformat', 'filetype'},
-    lualine_y = {'progress'},
-    lualine_z = {'location'}
+    lualine_y = {'location'},
+    lualine_z = {'progress'}
   },
   -- tabline = {
 	  -- lualine_a={},
@@ -34,5 +34,5 @@ require'lualine'.setup{
     lualine_y = {},
     lualine_z = {}
   },
-  extensions = {'nvim-tree','fugitive','toggleterm'}--一部の拡張機能に合わせて表示を変更
+  extensions = {'fern','fugitive','toggleterm'}--一部の拡張機能に合わせて表示を変更
 }

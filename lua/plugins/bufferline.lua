@@ -54,7 +54,7 @@ require('bufferline').setup {
         return true
       end
     end,
-    offsets = {{filetype = "NvimTree", text = "File Explorer" }},
+    offsets = {{filetype = "fern", text = " File Explorer" }},
     show_buffer_icons = true, -- disable filetype icons for buffers
     show_buffer_close_icons = true,
     show_close_icon = false,
@@ -69,5 +69,48 @@ require('bufferline').setup {
       -- add custom logic
       -- return buffer_a.modified > buffer_b.modified
     -- end
-  }
+  },
+	groups = {
+	  options = {
+		toggle_hidden_on_enter = true -- when you re-enter a hidden group this options re-opens that group so the buffer is visible
+	  },
+	  items = {
+		{
+		  name = "React", -- Mandatory
+		  highlight = {gui = "underline", guisp = "blue"}, -- Optional
+		  priority = 2, -- determines where it will appear relative to other groups (Optional)
+		  icon = "", -- Optional
+		  matcher = function(buf) -- Mandatory
+			return buf.filename:match('%.tsx') or buf.filename:match('%.jsx')
+		  end,
+		},
+		{
+		  name = "Docs",
+		  highlight = {gui = "undercurl", guisp = "green"},
+		  auto_close = false,  -- whether or not close this group if it doesn't contain the current buffer
+		  matcher = function(buf)
+			return buf.filename:match('%.md') or buf.filename:match('%.txt')
+		  end,
+		  separator = { -- Optional
+			style = require('bufferline.groups').separator.tab
+		  },
+		},
+		{
+		  name = "settings",
+		  highlight = {gui = "undercurl", guisp = "green"},
+		  auto_close = false,  -- whether or not close this group if it doesn't contain the current buffer
+		  matcher = function(buf)
+			return buf.filename:match('%.lua') 
+		  end,
+		  separator = { -- Optional
+			style = require('bufferline.groups').separator.tab
+		  },
+		}
+	  }
+	}
 }
+
+vim.o.hidden=true --バッファを未保存で移動しても警告を出さない bufferline.vimにて移動するために序盤に読み込む
+local opt = {noremap = true}
+vim.api.nvim_set_keymap('n','<c-l>','<cmd>BufferLineCycleNext<CR>',opt)
+vim.api.nvim_set_keymap('n','<c-h>','<cmd>BufferLineCyclePrev<CR>',opt)
