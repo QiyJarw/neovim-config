@@ -6,20 +6,18 @@ ext = require('telescope').extensions
 require('telescope').setup{
   defaults = {
 	  -- mappings = {
-		  -- n = {
-			  -- ["<leader>ff"] = cmd.find_files,
-			  -- ["<leader>fb"] = cmd.buffers,
-			  -- ["<leader>fg"] = cmd.live_grep,
-			  -- ["<leader>gc"] = cmd.git_commits,
-			  -- ["<leader>gh"] = cmd.help_tags,
-			  -- ["<leader>m"] =  ext.vim_bookmarks.current_file,
-			  -- ["<leader>M"] =  ext.vim_bookmarks.all,
-			  -- ["<leader>z"] = ext.zoxide.list,
-			  -- ["<leader>as"] = require('session-lens').search_session
-
-
+		  -- i = {
+			  -- -- ["<leader>ff"] = cmd.find_files,
+			  -- -- ["<leader>fb"] = cmd.buffers,
+			  -- -- ["<leader>fg"] = cmd.live_grep,
+			  -- -- ["<leader>gc"] = cmd.git_commits,
+			  -- -- ["<leader>gh"] = cmd.help_tags,
+			  -- -- ["<leader>m"] =  ext.vim_bookmarks.current_file,
+			  -- -- ["<leader>M"] =  ext.vim_bookmarks.all,
+			  -- -- ["<leader>z"] = ext.zoxide.list,
+			  -- -- ["<leader>as"] = require('session-lens').search_session
 		  -- }
-  -- }
+	-- }
     },
   pickers = {
     find_files = {
@@ -66,3 +64,5 @@ vim.api.nvim_set_keymap('n','<Leader>t','<cmd>TodoTelescope<CR>',opt)
 vim.api.nvim_set_keymap('n','<Leader>z','<cmd>Telescope zoxide list<CR>',opt)
 vim.api.nvim_set_keymap('n','<Leader>ca',"<cmd>lua require('telescope.builtin').lsp_code_actions()<CR>",opt)
 vim.api.nvim_set_keymap('n','<Leader>os',"<cmd>lua require('session-lens').search_session()<CR>",opt)
+vim.api.nvim_set_keymap('n','<Leader>m',"<cmd>lua require('telescope').extensions.vim_bookmarks.current_file()<cr>",opt)
+vim.api.nvim_set_keymap('n','<Leader>M',"<cmd>lua require('telescope').extensions.vim_bookmarks.all()<cr>",opt)
