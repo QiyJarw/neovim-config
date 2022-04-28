@@ -1,3 +1,15 @@
+local plug_path = vim.fn.findfile("plug.vim",vim.fn.stdpath("data").."/site/autoload")
+
+--[[plug.vim本体の確認]]
+if vim.fn.empty(plug_path) == 1 then
+	print("vim-plug not found. start instatlling...")
+	if vim.fn.has("win32") then --windowsの場合
+		vim.api.nvim_command("! iwr -useb https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim|ni $Env:LOCALAPPDATA'/nvim-data/site/autoload/plug.vim' -Force")
+	elseif vim.fn.has("unix") or vim.fn.has("mac") then --unix系統の場合
+		vim.api.nvim_command([[! sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim']])
+	end
+end
+
 --plugs settings
 vim.cmd([[
 call plug#begin(stdpath('data') . '/plugs/')
@@ -18,6 +30,8 @@ Plug 'rmagatti/goto-preview'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'akinsho/bufferline.nvim'
 Plug 'nvim-lualine/lualine.nvim'
+Plug 'nvim-treesitter/nvim-treesitter', {'do':':TSUpdate'}
+Plug 'SmiteshP/nvim-gps'
 "Plug 'nvim-lua/lsp-status.nvim'
 Plug 'folke/trouble.nvim'
 Plug 'rmagatti/auto-session'
@@ -30,18 +44,24 @@ Plug 'phaazon/hop.nvim'
 Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'cohama/lexima.vim'
 Plug 'tpope/vim-fugitive'
-Plug 'airblade/vim-gitgutter'
+" Plug 'airblade/vim-gitgutter'
+Plug 'lewis6991/gitsigns.nvim'
 Plug 'MattesGroeger/vim-bookmarks'
-Plug 'nvim-treesitter/nvim-treesitter'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzf-native.nvim',{'do':'make'}
+Plug 'rcarriga/nvim-notify'
 Plug 'tom-anders/telescope-vim-bookmarks.nvim'
 Plug 'jvgrootveld/telescope-zoxide'
 "Plug 'goolord/alpha-nvim'
+Plug 'nvim-orgmode/orgmode'
 Plug 'akinsho/toggleterm.nvim'
 Plug 'folke/todo-comments.nvim'
 Plug 'norcalli/nvim-colorizer.lua'
 Plug 'iamcco/markdown-preview.nvim', {'do': 'cd app && yarn install'}
+Plug 'j-hui/fidget.nvim'
+Plug 'kevinhwang91/nvim-hlslens'
+Plug 'petertriho/nvim-scrollbar'
+Plug 'folke/lsp-colors.nvim'
 "themes
 Plug 'ulwlu/elly.vim'
 Plug 'arcticicestudio/nord-vim'
