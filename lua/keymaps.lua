@@ -18,4 +18,4 @@ vim.api.nvim_set_keymap('i','<C-l>','<Right>',opts)
 
 --[[ｊキー二度押しでESCキー]]
 vim.api.nvim_set_keymap('i','jj','<Esc>',opts)
-vim.api.nvim_set_keymap('n','<Esc><ESC>','<cmd>nohlsearch<CR>',opts)
+vim.api.nvim_set_keymap('n','<Esc><ESC>',':nohlsearch<CR>',opts) --hlslens対策で<cmd>表記ではない
