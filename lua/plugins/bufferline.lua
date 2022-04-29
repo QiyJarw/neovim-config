@@ -22,9 +22,9 @@ require('bufferline').setup {
     --- some limitations that will *NOT* be fixed.
     name_formatter = function(buf)  -- buf contains a "name", "path" and "bufnr"
       -- remove extension from markdown files for example
-      if buf.name:match('%.md') then
-        return vim.fn.fnamemodify(buf.name, ':t:r')
-      end
+      -- if buf.name:match('%.md') then
+      --   return vim.fn.fnamemodify(buf.name, ':t:r')
+      -- end
     end,
     max_name_length = 18,
     max_prefix_length = 15, -- prefix used when a buffer is de-duplicated
@@ -64,7 +64,7 @@ require('bufferline').setup {
     -- [focused and unfocused]. eg: { '|', '|' }
     -- separator_style = "slant",
     -- enforce_regular_tabs = false | true,
-    always_show_bufferline = true,
+    always_show_bufferline = false,
     sort_by = 'id'
       -- add custom logic
       -- return buffer_a.modified > buffer_b.modified
