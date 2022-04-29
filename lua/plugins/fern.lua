@@ -1,8 +1,10 @@
 ---- "fern-nerd-font設定
 -- let g:fern#renderer = "nerdfont"
 -- 隠しファイルを表示するように設定
-vim.cmd[[let g:fern#default_hidden=1]]
-vim.cmd([[let g:fern#renderer = "nerdfont"]]) --fernのアイコン設定に利用
+-- vim.cmd[[let g:fern#default_hidden=1]]
+vim.g['fern#default_hidden'] = 1
+-- vim.cmd([[let g:fern#renderer = "nerdfont"]]) --fernのアイコン設定に利用
+vim.g['fern#renderer'] = "nerdfont"
 
 --fern-preview設定
 
