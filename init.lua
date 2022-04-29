@@ -2,8 +2,8 @@
 if vim.fn.has("win32") then
 	vim.o.shell='pwsh'
 	vim.o.shellcmdflag='-c'
-	vim.o.shellquote="\""
-	vim.o.shellxquote=''
+	vim.o.shellquote=[[]]
+	vim.o.shellxquote=[[]]
 end
 
 require('keymaps')--まずキーマップを読み込む
@@ -16,7 +16,7 @@ require('plug')--プラグインを読み込む
 if vim.g.neovide == true then
 	vim.o.guifont=[[HackGenNerd Console:h13]]
 	vim.o.pumblend=13 --PopUpMenuの透過設定
-	vim.g.neovide_transparency=0.9
+	-- vim.g.neovide_transparency=0.9
 	vim.g.neovide_remember_window_size = true
 end
 
