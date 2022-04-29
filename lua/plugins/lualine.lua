@@ -35,6 +35,6 @@ require'lualine'.setup{
     lualine_y = {},
     lualine_z = {}
   },
-  extensions = {'fern','fugitive','toggleterm'}--一部の拡張機能に合わせて表示を変更
+  extensions = {'fern','toggleterm'}--一部の拡張機能に合わせて表示を変更
 }
 
