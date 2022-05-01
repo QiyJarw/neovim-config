@@ -6,6 +6,6 @@
 git clone https://github.com/QiyJarw/neovim-config 
 ```
 2. put the contents of the folder to the config dir:
-- `Win`: '$HOME\\USERNAME\\AppData\\Local\\nvim\\'
+- `Win`: '$HOME\\AppData\\Local\\nvim\\'
 - `Unix`: '$HOME/.config/nvim/'
 
