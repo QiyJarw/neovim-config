@@ -18,7 +18,7 @@ Plug 'nvim-lua/plenary.nvim' "deps on telescope
 Plug 'nvim-lua/popup.nvim'
 Plug 'lambdalisue/nerdfont.vim'
 Plug 'antoinemadec/FixCursorHold.nvim'
-Plug 'lambdalisue/fern.vim' | Plug 'lambdalisue/fern-renderer-nerdfont.vim' | Plug 'lambdalisue/glyph-palette.vim'
+Plug 'lambdalisue/fern.vim' | Plug 'lambdalisue/fern-hijack.vim' | Plug 'lambdalisue/fern-renderer-nerdfont.vim' | Plug 'lambdalisue/glyph-palette.vim'
 Plug 'yuki-yano/fern-preview.vim' | Plug 'lambdalisue/fern-git-status.vim'
 Plug 'neovim/nvim-lspconfig'
 Plug 'hrsh7th/vim-vsnip' | Plug 'hrsh7th/vim-vsnip-integ'
