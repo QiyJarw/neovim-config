@@ -3,10 +3,12 @@ local plug_path = vim.fn.findfile("plug.vim",vim.fn.stdpath("data").."/site/auto
 --[[plug.vim本体の確認]]
 if vim.fn.empty(plug_path) == 1 then
 	print("vim-plug not found. start instatlling...")
-	if vim.fn.has("win32") then --windowsの場合
+	if vim.fn.has("win32")==1 then --windowsの場合
 		vim.api.nvim_command("! iwr -useb https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim|ni $Env:LOCALAPPDATA'/nvim-data/site/autoload/plug.vim' -Force")
-	elseif vim.fn.has("unix") or vim.fn.has("mac") then --unix系統の場合
-		vim.api.nvim_command([[! sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim']])
+	elseif vim.fn.has("unix")==1 or vim.fn.has("mac")==1 then --unix系統の場合
+		vim.api.nvim_command([[!sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim']])
+		vim.api.nvim_command('so %')
+		vim.api.nvim_command('PlugInstall')
 	end
 end
 
