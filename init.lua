@@ -1,9 +1,11 @@
 --[[windowsのターミナル設定]]
-if vim.fn.has("win32") then
+if vim.fn.has("win32")==1 then
 	vim.o.shell='pwsh'
 	vim.o.shellcmdflag='-c'
 	vim.o.shellquote=[[]]
 	vim.o.shellxquote=[[]]
+elseif vim.fn.has("unix")==1 then
+	vim.o.shell='bash'
 end
 
 require('keymaps')--まずキーマップを読み込む
