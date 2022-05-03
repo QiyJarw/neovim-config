@@ -90,5 +90,5 @@ for _,plg in ipairs(config) do
 	if not ok then
 		print(plg .. ' is not loaded.')
 	end
-end	
+end
 --Plug 'kassio/neoterm' "pwshでうまく動かない
