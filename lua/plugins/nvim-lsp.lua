@@ -41,8 +41,13 @@ capabilities.textDocument.completion.completionItem.snippetSupport = true
 capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 -- capabilities = vim.tbl_extend('keep', capabilities or {}, lsp_status.capabilities)
 
+
+local runtime_path = vim.split(package.path, ';')
+table.insert(runtime_path, "lua/?.lua")
+table.insert(runtime_path, "lua/?/init.lua")
+
 --[[サーバーを有効にする]]
-local servers = {'tsserver','rust_analyzer','html','cssls'}
+local servers = {'ccls','tsserver','rust_analyzer','html','cssls','sumneko_lua'}
 for _,lsp in ipairs(servers) do
 	nvim_lsp[lsp].setup({
 		on_attach = on_attach,
@@ -52,4 +57,25 @@ for _,lsp in ipairs(servers) do
 		}
 	})
 end
+
+require'lspconfig'.sumneko_lua.setup{
+	-- cmd = {sumneko_lua_binary_path, "-E", sumneko_root_path .. "/main.lua"},
+	settings = {
+		Lua = {
+			runtime = {
+				version = 'LuaJIT',
+				path = runtime_path,
+			},
+			diagnostics = {
+				globals = {'vim'},
+			},
+			workspace = {
+				library = vim.api.nvim_get_runtime_file("",true),
+			},
+			telemetry = {
+				enable = false,
+			},
+		},
+	},
+}
 
