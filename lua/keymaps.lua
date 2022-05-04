@@ -1,4 +1,4 @@
-opts = { noremap = true } 
+opts = { noremap = true ,silent = true} 
 vim.g.mapleader=' ' --<Leader>キーの設定。<Space>ではうまくいかない
 --[[矢印キーの無効化]]
 vim.api.nvim_set_keymap('n','<UP>','<Nop>',opts)
