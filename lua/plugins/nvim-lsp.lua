@@ -1,4 +1,5 @@
-local nvim_lsp = require('lspconfig')
+require('nvim-lsp-installer').setup{}
+local lspconfig= require('lspconfig')
 -- local lsp_status = require('lsp-status')
 -- lsp_status.register_progress()
 
@@ -42,40 +43,47 @@ capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 -- capabilities = vim.tbl_extend('keep', capabilities or {}, lsp_status.capabilities)
 
 
-local runtime_path = vim.split(package.path, ';')
-table.insert(runtime_path, "lua/?.lua")
-table.insert(runtime_path, "lua/?/init.lua")
+-- local sumneko_binary_path = vim.fn.exepath('lua-language-server')
+-- local sumneko_root_path = vim.fn.fnamemodify(sumneko_binary_path, ':h:h:h') 
+-- local runtime_path = vim.split(package.path, ';')
+-- table.insert(runtime_path, "lua/?.lua")
+-- table.insert(runtime_path, "lua/?/init.lua")
 
 --[[サーバーを有効にする]]
-local servers = {'ccls','tsserver','rust_analyzer','html','cssls','sumneko_lua'}
-for _,lsp in ipairs(servers) do
-	nvim_lsp[lsp].setup({
-		on_attach = on_attach,
-		capabilities = capabilities,
-		flags = {
-			debounce_text_changes = 150,
-		}
-	})
-end
+-- local servers = {'ccls','tsserver','rust_analyzer','html','cssls','sumneko_lua'}
+-- for _,lsp in ipairs(servers) do
+-- 	nvim_lsp[lsp].setup({
+-- 		on_attach = on_attach,
+-- 		capabilities = capabilities,
+-- 		flags = {
+-- 			debounce_text_changes = 150,
+-- 		}
+-- 	})
+-- end
 
-require'lspconfig'.sumneko_lua.setup{
-	-- cmd = {sumneko_lua_binary_path, "-E", sumneko_root_path .. "/main.lua"},
+lspconfig.rust_analyzer.setup{
+	on_attach = on_attach,
+	capabilities = capabilities
+}
+
+lspconfig.sumneko_lua.setup{
+	on_attach = on_attach,
+	capabilities = capabilities,
 	settings = {
 		Lua = {
-			runtime = {
-				version = 'LuaJIT',
-				path = runtime_path,
-			},
 			diagnostics = {
 				globals = {'vim'},
-			},
-			workspace = {
-				library = vim.api.nvim_get_runtime_file("",true),
-			},
-			telemetry = {
-				enable = false,
 			},
 		},
 	},
 }
 
+lspconfig.tsserver.setup{
+	on_attach = on_attach,
+	capabilities = capabilities,
+}
+
+lspconfig.ccls.setup{
+	on_attath = on_attach,
+	capabilities = capabilities
+}
