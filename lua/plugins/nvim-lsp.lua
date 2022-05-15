@@ -44,7 +44,7 @@ capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 
 
 -- local sumneko_binary_path = vim.fn.exepath('lua-language-server')
--- local sumneko_root_path = vim.fn.fnamemodify(sumneko_binary_path, ':h:h:h') 
+-- local sumneko_root_path = vim.fn.fnamemodify(sumneko_binary_path, ':h:h:h')
 -- local runtime_path = vim.split(package.path, ';')
 -- table.insert(runtime_path, "lua/?.lua")
 -- table.insert(runtime_path, "lua/?/init.lua")
@@ -60,6 +60,16 @@ capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 -- 		}
 -- 	})
 -- end
+
+lspconfig.html.setup{
+	on_attach = on_attach,
+	capabilities = capabilities
+}
+
+lspconfig.cssls.setup{
+	on_attach = on_attach,
+	capabilities = capabilities
+}
 
 lspconfig.rust_analyzer.setup{
 	on_attach = on_attach,
@@ -85,5 +95,5 @@ lspconfig.tsserver.setup{
 
 lspconfig.ccls.setup{
 	on_attath = on_attach,
-	capabilities = capabilities
+	capabilities = capabilities,
 }
