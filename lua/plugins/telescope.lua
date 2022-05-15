@@ -1,8 +1,8 @@
 --telescope設定
 --simple theme
 
-cmd = require('telescope.builtin')
-ext = require('telescope').extensions
+-- local cmd = require('telescope.builtin')
+-- local ext = require('telescope').extensions
 require('telescope').setup{
   defaults = {
 	  -- mappings = {
