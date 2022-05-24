@@ -35,12 +35,13 @@ Plug 'nvim-lualine/lualine.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do':':TSUpdate'}
 Plug 'SmiteshP/nvim-gps'
 "Plug 'nvim-lua/lsp-status.nvim'
+Plug 'windwp/nvim-ts-autotag'
 Plug 'folke/trouble.nvim'
 Plug 'rmagatti/auto-session'
 Plug 'rmagatti/session-lens'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-surround'
-Plug 'alvan/vim-closetag',{'for':[ 'html','typescriptreact' ]}
+"Plug 'alvan/vim-closetag',{'for':[ 'html','typescriptreact' ]}
 Plug 'tpope/vim-commentary'
 Plug 'phaazon/hop.nvim'
 Plug 'lukas-reineke/indent-blankline.nvim'
