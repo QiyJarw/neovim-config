@@ -94,6 +94,6 @@ lspconfig.tsserver.setup{
 }
 
 lspconfig.ccls.setup{
-	on_attath = on_attach,
+	on_attach = on_attach,
 	capabilities = capabilities,
 }
