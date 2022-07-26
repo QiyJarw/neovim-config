@@ -39,6 +39,7 @@ Plug 'windwp/nvim-ts-autotag'
 Plug 'folke/trouble.nvim'
 Plug 'rmagatti/auto-session'
 Plug 'rmagatti/session-lens'
+Plug 'mfussenegger/nvim-dap'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-surround'
 "Plug 'alvan/vim-closetag',{'for':[ 'html','typescriptreact' ]}
@@ -66,6 +67,8 @@ Plug 'j-hui/fidget.nvim'
 Plug 'kevinhwang91/nvim-hlslens'
 Plug 'petertriho/nvim-scrollbar'
 Plug 'folke/lsp-colors.nvim'
+"language plugins
+Plug 'simrat39/rust-tools.nvim'
 "themes
 Plug 'ulwlu/elly.vim'
 Plug 'arcticicestudio/nord-vim'
