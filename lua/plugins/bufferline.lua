@@ -10,7 +10,10 @@ require('bufferline').setup {
     -- NOTE: this plugin is designed with this icon in mind,
     -- and so changing this is NOT recommended, this is intended
     -- as an escape hatch for people who cannot bear it for whatever reason
-    indicator_icon = '▎',
+	indicator = {
+		icon = '▎',
+		style = 'icon'
+	},
     buffer_close_icon = '',
     modified_icon = '●',
     close_icon = '',
@@ -65,11 +68,10 @@ require('bufferline').setup {
     -- separator_style = "slant",
     -- enforce_regular_tabs = false | true,
     always_show_bufferline = false,
-    sort_by = 'id'
+    sort_by = 'id',
       -- add custom logic
       -- return buffer_a.modified > buffer_b.modified
-    -- end
-  },
+    -- endfunction
 	groups = {
 	  options = {
 		toggle_hidden_on_enter = true -- when you re-enter a hidden group this options re-opens that group so the buffer is visible
@@ -108,6 +110,7 @@ require('bufferline').setup {
 		}
 	  }
 	}
+  },
 }
 
 vim.o.hidden=true --バッファを未保存で移動しても警告を出さない bufferline.vimにて移動するために序盤に読み込む
