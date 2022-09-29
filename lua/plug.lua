@@ -1,100 +1,107 @@
-local plug_path = vim.fn.findfile("plug.vim",vim.fn.stdpath("data").."/site/autoload")
+--TODO: 動作が安定するようならrepoにpushする。
+local jetpackfile = vim.fn.findfile("jetpack.vim", vim.fn.stdpath("data") .. "/site/pack/jetpack/opt/vim-jetpack/plugin")
+local jetpackurl = 'https://githubusercontent.com/tani/vim-jetpack/master/plugin/jetpack.vim'
 
 --[[plug.vim本体の確認]]
-if vim.fn.empty(plug_path) == 1 then
-	print("vim-plug not found. start instatlling...")
-	if vim.fn.has("win32")==1 then --windowsの場合
-		vim.api.nvim_command("! iwr -useb https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim|ni $Env:LOCALAPPDATA'/nvim-data/site/autoload/plug.vim' -Force")
-	elseif vim.fn.has("unix")==1 or vim.fn.has("mac")==1 then --unix系統の場合
-		vim.api.nvim_command([[!sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim']])
-		vim.api.nvim_command('so %')
-		vim.api.nvim_command('PlugInstall')
+if vim.fn.filereadable(jetpackfile) == 0 then
+	print("vim-jetpack not found. start instatlling...")
+	if vim.fn.has("win32") == 1 then --windowsの場合
+		-- vim.api.nvim_command("! iwr -useb https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim|ni $Env:LOCALAPPDATA'/nvim-data/site/autoload/plug.vim' -Force")
+		vim.fn.system('iwr -useb ' ..
+			jetpackurl .. '|ni $Env:LOCALAPPDATA' .. '/nvim-data/site/pack/jetpack/opt/vim-jetpack/plugin/vim-jetpack.vim -Force')
+	elseif vim.fn.has("unix") == 1 or vim.fn.has("mac") == 1 then --unix系統の場合
+		-- vim.api.nvim_command([[!sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim']])
+		vim.fn.system('curl -fsSLo ' .. jetpackfile .. ' --create-dirs ' .. jetpackurl)
+
+		--vim.api.nvim_command('JetpackSync')
 	end
 end
-
 --plugs settings
+
 vim.cmd([[
-call plug#begin(stdpath('data') . '/plugs/')
-Plug 'vim-jp/vimdoc-ja'
-Plug 'nvim-lua/plenary.nvim' "deps on telescope
-Plug 'nvim-lua/popup.nvim'
-Plug 'lambdalisue/nerdfont.vim'
-Plug 'antoinemadec/FixCursorHold.nvim'
-Plug 'lambdalisue/fern.vim',{'branch':'main'} | Plug 'lambdalisue/fern-hijack.vim' | Plug 'lambdalisue/fern-renderer-nerdfont.vim' | Plug 'lambdalisue/glyph-palette.vim'
-Plug 'yuki-yano/fern-preview.vim' | Plug 'lambdalisue/fern-git-status.vim'
-Plug 'neovim/nvim-lspconfig'
-Plug 'hrsh7th/vim-vsnip' | Plug 'hrsh7th/vim-vsnip-integ'
-Plug 'hrsh7th/nvim-cmp'
-Plug 'hrsh7th/cmp-nvim-lsp' | Plug 'hrsh7th/cmp-vsnip' | Plug 'hrsh7th/cmp-buffer'
-Plug 'onsails/lspkind-nvim'
-Plug 'williamboman/nvim-lsp-installer'
-Plug 'rmagatti/goto-preview'
-Plug 'kyazdani42/nvim-web-devicons'
-Plug 'akinsho/bufferline.nvim'
-Plug 'nvim-lualine/lualine.nvim'
-Plug 'nvim-treesitter/nvim-treesitter', {'do':':TSUpdate'}
-Plug 'SmiteshP/nvim-gps'
-"Plug 'nvim-lua/lsp-status.nvim'
-Plug 'windwp/nvim-ts-autotag'
-Plug 'folke/trouble.nvim'
-Plug 'rmagatti/auto-session'
-Plug 'rmagatti/session-lens'
-Plug 'mfussenegger/nvim-dap'
-Plug 'terryma/vim-multiple-cursors'
-Plug 'tpope/vim-surround'
-"Plug 'alvan/vim-closetag',{'for':[ 'html','typescriptreact' ]}
-Plug 'tpope/vim-commentary'
-Plug 'phaazon/hop.nvim'
-Plug 'lukas-reineke/indent-blankline.nvim'
-Plug 'cohama/lexima.vim'
-Plug 'wellle/targets.vim'
-Plug 'tpope/vim-fugitive'
-" Plug 'airblade/vim-gitgutter'
-Plug 'lewis6991/gitsigns.nvim'
-Plug 'MattesGroeger/vim-bookmarks'
-Plug 'nvim-telescope/telescope.nvim'
-Plug 'nvim-telescope/telescope-fzf-native.nvim',{'do':'make'}
-Plug 'nvim-telescope/telescope-ui-select.nvim'
-Plug 'rcarriga/nvim-notify'
-Plug 'tom-anders/telescope-vim-bookmarks.nvim'
-Plug 'jvgrootveld/telescope-zoxide'
-"Plug 'goolord/alpha-nvim'
-Plug 'nvim-orgmode/orgmode'
-Plug 'akinsho/toggleterm.nvim'
-Plug 'folke/todo-comments.nvim'
-Plug 'norcalli/nvim-colorizer.lua'
-Plug 'iamcco/markdown-preview.nvim', {'do': 'cd app && yarn install'}
-Plug 'j-hui/fidget.nvim'
-Plug 'kevinhwang91/nvim-hlslens'
-Plug 'petertriho/nvim-scrollbar'
-Plug 'folke/lsp-colors.nvim'
+packadd vim-jetpack
+call jetpack#begin(stdpath('data') . '/plugs/')
+Jetpack 'vim-jp/vimdoc-ja'
+Jetpack 'nvim-lua/plenary.nvim' "deps on telescope
+Jetpack 'nvim-lua/popup.nvim'
+Jetpack 'lambdalisue/nerdfont.vim'
+Jetpack 'antoinemadec/FixCursorHold.nvim'
+Jetpack 'lambdalisue/fern.vim',{'branch':'main'} | Jetpack 'lambdalisue/fern-hijack.vim' | Jetpack 'lambdalisue/fern-renderer-nerdfont.vim' | Jetpack 'lambdalisue/glyph-palette.vim'
+Jetpack 'yuki-yano/fern-preview.vim' | Jetpack 'lambdalisue/fern-git-status.vim'
+Jetpack 'neovim/nvim-lspconfig'
+Jetpack 'hrsh7th/vim-vsnip' | Jetpack 'hrsh7th/vim-vsnip-integ'
+Jetpack 'hrsh7th/nvim-cmp'
+Jetpack 'hrsh7th/cmp-nvim-lsp' | Jetpack 'hrsh7th/cmp-vsnip' | Jetpack 'hrsh7th/cmp-buffer'
+Jetpack 'onsails/lspkind-nvim'
+Jetpack 'williamboman/nvim-lsp-installer'
+Jetpack 'rmagatti/goto-preview'
+Jetpack 'kyazdani42/nvim-web-devicons'
+Jetpack 'akinsho/bufferline.nvim'
+Jetpack 'nvim-lualine/lualine.nvim'
+Jetpack 'nvim-treesitter/nvim-treesitter', {'do':':TSUpdate'}
+Jetpack 'SmiteshP/nvim-gps'
+Jetpack 'gelguy/wilder.nvim'
+"Jetpack 'nvim-lua/lsp-status.nvim'
+Jetpack 'windwp/nvim-ts-autotag'
+Jetpack 'folke/trouble.nvim'
+Jetpack 'rmagatti/auto-session'
+Jetpack 'rmagatti/session-lens'
+Jetpack 'mfussenegger/nvim-dap'
+Jetpack 'terryma/vim-multiple-cursors'
+Jetpack 'tpope/vim-surround'
+"Jetpack 'alvan/vim-closetag',{'for':[ 'html','typescriptreact' ]}
+Jetpack 'tpope/vim-commentary'
+Jetpack 'phaazon/hop.nvim'
+Jetpack 'lukas-reineke/indent-blankline.nvim'
+Jetpack 'cohama/lexima.vim'
+Jetpack 'wellle/targets.vim'
+Jetpack 'tpope/vim-fugitive'
+" Jetpack 'airblade/vim-gitgutter'
+Jetpack 'lewis6991/gitsigns.nvim'
+Jetpack 'MattesGroeger/vim-bookmarks'
+Jetpack 'nvim-telescope/telescope.nvim'
+Jetpack 'nvim-telescope/telescope-fzf-native.nvim',{'do':'make'}
+Jetpack 'nvim-telescope/telescope-ui-select.nvim'
+Jetpack 'rcarriga/nvim-notify'
+Jetpack 'tom-anders/telescope-vim-bookmarks.nvim'
+Jetpack 'jvgrootveld/telescope-zoxide'
+"Jetpack 'goolord/alpha-nvim'
+Jetpack 'nvim-orgmode/orgmode'
+Jetpack 'akinsho/toggleterm.nvim'
+Jetpack 'folke/todo-comments.nvim'
+Jetpack 'norcalli/nvim-colorizer.lua'
+Jetpack 'iamcco/markdown-preview.nvim', {'do': 'cd app && yarn install'}
+Jetpack 'j-hui/fidget.nvim'
+Jetpack 'kevinhwang91/nvim-hlslens'
+Jetpack 'petertriho/nvim-scrollbar'
+Jetpack 'folke/lsp-colors.nvim'
 "language plugins
-Plug 'simrat39/rust-tools.nvim'
+Jetpack 'simrat39/rust-tools.nvim'
 "themes
-Plug 'ulwlu/elly.vim'
-Plug 'arcticicestudio/nord-vim'
-Plug 'tomasr/molokai'
-Plug 'joshdick/onedark.vim'
-Plug 'cocopon/iceberg.vim'
-Plug 'ayu-theme/ayu-vim'
-Plug 'w0ng/vim-hybrid'
-Plug 'morhetz/gruvbox'
-Plug 'sainnhe/everforest'
-Plug 'sonph/onehalf'
-Plug 'dracula/vim'
-Plug 'jacoborus/tender'
-Plug 'shaunsingh/nord.nvim'
-Plug 'EdenEast/nightfox.nvim'
-Plug 'rmehri01/onenord.nvim'
-Plug 'Mofiqul/vscode.nvim'
-call plug#end()
+Jetpack 'ulwlu/elly.vim'
+Jetpack 'arcticicestudio/nord-vim'
+Jetpack 'tomasr/molokai'
+Jetpack 'joshdick/onedark.vim'
+Jetpack 'cocopon/iceberg.vim'
+Jetpack 'ayu-theme/ayu-vim'
+Jetpack 'w0ng/vim-hybrid'
+Jetpack 'morhetz/gruvbox'
+Jetpack 'sainnhe/everforest'
+Jetpack 'sonph/onehalf'
+Jetpack 'dracula/vim'
+Jetpack 'jacoborus/tender'
+Jetpack 'shaunsingh/nord.nvim'
+Jetpack 'EdenEast/nightfox.nvim'
+Jetpack 'rmehri01/onenord.nvim'
+Jetpack 'Mofiqul/vscode.nvim'
+call jetpack#end()
 ]])
 
 local config = vim.fn.split(vim.fn.glob(vim.fn.stdpath('config') .. '/lua/plugins/' .. '*.lua'))
-for _,plg in ipairs(config) do
-	local ok, _ = pcall(require,'plugins/' .. vim.fn.fnamemodify(plg,':t:r'))
+for _, plg in ipairs(config) do
+	local ok, _ = pcall(require, 'plugins/' .. vim.fn.fnamemodify(plg, ':t:r'))
 	if not ok then
 		print(plg .. ' is not loaded.')
 	end
 end
---Plug 'kassio/neoterm' "pwshでうまく動かない
+--Jetpack 'kassio/neoterm' "pwshでうまく動かない
