@@ -43,6 +43,11 @@ require('telescope').setup{
 		fzf = {
 			fuzzy = true
 		},
+		["ui-select"] = {
+			require('telescope.themes').get_dropdown {
+
+			}
+		}
 	}
 }
 
@@ -50,6 +55,7 @@ require('telescope').load_extension('fzf')
 require('telescope').load_extension('zoxide')
 require('telescope').load_extension('vim_bookmarks')
 require('telescope').load_extension('session-lens')
+require('telescope').load_extension('ui-select')
 
 --keymappings
 local opts = {noremap = true}
@@ -62,7 +68,8 @@ vim.api.nvim_set_keymap('n','<Leader>gc',"<cmd>lua require('telescope.builtin').
 vim.api.nvim_set_keymap('n','<Leader>:',"<cmd>lua require('telescope.builtin').commands()<CR>",opts)
 vim.api.nvim_set_keymap('n','<Leader>t','<cmd>TodoTelescope<CR>',opts)
 vim.api.nvim_set_keymap('n','<Leader>z','<cmd>Telescope zoxide list<CR>',opts)
-vim.api.nvim_set_keymap('n','<Leader>ca',"<cmd>lua require('telescope.builtin').lsp_code_actions()<CR>",opts)
+-- vim.api.nvim_set_keymap('n','<Leader>ca',"<cmd>lua require('telescope.builtin').lsp_code_actions()<CR>",opts)
+vim.api.nvim_set_keymap('n','<Leader>ca',"<cmd>lua vim.lsp.buf.code_action()<CR>",opts)
 vim.api.nvim_set_keymap('n','<Leader>os',"<cmd>lua require('session-lens').search_session()<CR>",opts)
 vim.api.nvim_set_keymap('n','<Leader>m',"<cmd>lua require('telescope').extensions.vim_bookmarks.current_file()<cr>",opts)
 vim.api.nvim_set_keymap('n','<Leader>M',"<cmd>lua require('telescope').extensions.vim_bookmarks.all()<cr>",opts)
