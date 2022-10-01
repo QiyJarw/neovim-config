@@ -12,7 +12,7 @@ require('bufferline').setup {
     -- as an escape hatch for people who cannot bear it for whatever reason
 	indicator = {
 		icon = '▎',
-		style = 'icon'
+		style = 'underline'
 	},
     buffer_close_icon = '',
     modified_icon = '●',
@@ -65,7 +65,7 @@ require('bufferline').setup {
     persist_buffer_sort = true, -- whether or not custom sorted buffers should persist
     -- can also be a table containing 2 custom separators
     -- [focused and unfocused]. eg: { '|', '|' }
-    -- separator_style = "slant",
+    -- separator_style = "thick",
     -- enforce_regular_tabs = false | true,
     always_show_bufferline = false,
     sort_by = 'id',
@@ -79,7 +79,7 @@ require('bufferline').setup {
 	  items = {
 		{
 		  name = "React", -- Mandatory
-		  highlight = {gui = "underline", guisp = "blue"}, -- Optional
+		  highlight = {undercurl = false, sp = "blue"}, -- Optional
 		  priority = 2, -- determines where it will appear relative to other groups (Optional)
 		  icon = "", -- Optional
 		  matcher = function(buf) -- Mandatory
@@ -88,7 +88,7 @@ require('bufferline').setup {
 		},
 		{
 		  name = "Docs",
-		  highlight = {gui = "undercurl", guisp = "green"},
+		  highlight = {undercurl = false, sp = "green"},
 		  auto_close = false,  -- whether or not close this group if it doesn't contain the current buffer
 		  matcher = function(buf)
 			return buf.filename:match('%.md') or buf.filename:match('%.txt')
@@ -99,10 +99,10 @@ require('bufferline').setup {
 		},
 		{
 		  name = "settings",
-		  highlight = {gui = "undercurl", guisp = "green"},
+		  highlight = {undercurl = false, sp = "green"},
 		  auto_close = false,  -- whether or not close this group if it doesn't contain the current buffer
 		  matcher = function(buf)
-			return buf.filename:match('%.lua') 
+			return buf.filename:match('%.lua')
 		  end,
 		  separator = { -- Optional
 			style = require('bufferline.groups').separator.tab
