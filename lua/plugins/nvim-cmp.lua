@@ -16,6 +16,9 @@ cmp.setup({
 			end
 		})
 	},
+	window = {
+		documentation = cmp.config.window.bordered()
+	},
 	mapping = {
 		['<C-p>'] = cmp.mapping.select_prev_item(),
 		['<C-n>'] = cmp.mapping.select_next_item(),
