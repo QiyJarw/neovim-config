@@ -94,7 +94,7 @@ require('bufferline').setup {
 			return buf.filename:match('%.md') or buf.filename:match('%.txt')
 		  end,
 		  separator = { -- Optional
-			style = require('bufferline.groups').separator.tab
+			style = require('bufferline.groups').separator.pill
 		  },
 		},
 		{
@@ -105,7 +105,7 @@ require('bufferline').setup {
 			return buf.filename:match('%.lua')
 		  end,
 		  separator = { -- Optional
-			style = require('bufferline.groups').separator.tab
+			style = require('bufferline.groups').separator.pill
 		  },
 		}
 	  }
