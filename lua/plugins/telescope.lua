@@ -1,8 +1,6 @@
 --telescope設定
---simple theme
+local cmd = require('telescope.builtin')
 
--- local cmd = require('telescope.builtin')
--- local ext = require('telescope').extensions
 require('telescope').setup{
   defaults = {
 	  -- mappings = {
@@ -28,9 +26,6 @@ require('telescope').setup{
 	   },
 	live_grep = {
 		},
-	-- file_browser = {
-	-- 	theme = "dropdown"
-	-- 	   },
 	fd = {
 		theme = "dropdown"
 	},
@@ -57,19 +52,20 @@ require('telescope').load_extension('vim_bookmarks')
 require('telescope').load_extension('session-lens')
 require('telescope').load_extension('ui-select')
 
+local ext = require('telescope').extensions
+
 --keymappings
 local opts = {noremap = true}
-vim.api.nvim_set_keymap('n','<Leader>ff',"<cmd>lua require('telescope.builtin').find_files()<CR>",opts)
-vim.api.nvim_set_keymap('n','<Leader>fb',"<cmd>lua require('telescope.builtin').buffers()<CR>",opts)
-vim.api.nvim_set_keymap('n','<Leader>fg',"<cmd>lua require('telescope.builtin').live_grep()<CR>",opts)
-vim.api.nvim_set_keymap('n','<Leader>fh',"<cmd>lua require('telescope.builtin').help_tags()<CR>",opts)
-vim.api.nvim_set_keymap('n','<Leader>gc',"<cmd>lua require('telescope.builtin').git_commits()<CR>",opts)
--- vim.api.nvim_set_keymap('n','<Leader>FF','<cmd>lua require('telescope.builtin').file_browser()<CR>',opts)
-vim.api.nvim_set_keymap('n','<Leader>:',"<cmd>lua require('telescope.builtin').commands()<CR>",opts)
-vim.api.nvim_set_keymap('n','<Leader>t','<cmd>TodoTelescope<CR>',opts)
+vim.keymap.set('n','<Leader>ff',cmd.find_files,opts)
+vim.keymap.set('n','<Leader>fb',cmd.buffers,opts)
+vim.keymap.set('n','<Leader>fg',cmd.live_grep,opts)
+vim.keymap.set('n','<Leader>fh',cmd.help_tags,opts)
+vim.keymap.set('n','<Leader>gc',cmd.git_commits,opts)
+vim.keymap.set('n','<Leader>gs',cmd.git_status,opts)
+vim.keymap.set('n','<Leader>d',cmd.diagnostics,opts)
+vim.keymap.set('n','<Leader>:',cmd.commands,opts)
+vim.keymap.set('n','<Leader>t','<cmd>TodoTelescope<CR>',opts)
 vim.api.nvim_set_keymap('n','<Leader>z','<cmd>Telescope zoxide list<CR>',opts)
--- vim.api.nvim_set_keymap('n','<Leader>ca',"<cmd>lua require('telescope.builtin').lsp_code_actions()<CR>",opts)
-vim.api.nvim_set_keymap('n','<Leader>ca',"<cmd>lua vim.lsp.buf.code_action()<CR>",opts)
-vim.api.nvim_set_keymap('n','<Leader>os',"<cmd>lua require('session-lens').search_session()<CR>",opts)
-vim.api.nvim_set_keymap('n','<Leader>m',"<cmd>lua require('telescope').extensions.vim_bookmarks.current_file()<cr>",opts)
-vim.api.nvim_set_keymap('n','<Leader>M',"<cmd>lua require('telescope').extensions.vim_bookmarks.all()<cr>",opts)
+vim.keymap.set('n','<Leader>os',"<cmd>lua require('session-lens').search_session()<CR>",opts)
+vim.keymap.set('n','<Leader>m',ext.vim_bookmarks.current_file,opts)
+vim.keymap.set('n','<Leader>M',ext.vim_bookmarks.all,opts)
