@@ -1,5 +1,5 @@
 --背景透過設定:neovide時は無効
-vim.opt.termguicolors = true
+vim.o.termguicolors = true
 -- if vim.fn.has('win32') ==1 and vim.g.neovide ~=true then
 -- 	 vim.cmd([[augroup TransparentBG
 -- 		 autocmd!
