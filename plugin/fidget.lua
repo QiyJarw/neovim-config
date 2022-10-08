@@ -1,1 +1,2 @@
-require"fidget".setup{}
+-- plugin uninstalled.
+-- require"fidget".setup{}
