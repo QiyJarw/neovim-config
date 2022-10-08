@@ -1,3 +1,4 @@
+vim.notify = require("notify")
 require('auto-session').setup{
 	log_level='info',
 	auto_session_suppress_dirs = {'~/','~/div'},
@@ -11,6 +12,6 @@ require('auto-session').setup{
 
 vim.o.sessionoptions="blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal"
 
---session-lenz
+--session-lens
 local opt = {noremap = true}
 vim.api.nvim_set_keymap('n','<leader>os','<cmd>SearchSession<CR>',opt)
