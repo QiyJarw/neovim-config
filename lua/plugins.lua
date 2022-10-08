@@ -26,8 +26,8 @@ Jetpack 'nvim-lua/plenary.nvim' "deps on telescope
 Jetpack 'nvim-lua/popup.nvim'
 Jetpack 'lambdalisue/nerdfont.vim'
 Jetpack 'antoinemadec/FixCursorHold.nvim'
-Jetpack 'lambdalisue/fern.vim',{'branch':'main'} | Jetpack 'lambdalisue/fern-hijack.vim' | Jetpack 'lambdalisue/fern-renderer-nerdfont.vim' | Jetpack 'lambdalisue/glyph-palette.vim'
-Jetpack 'yuki-yano/fern-preview.vim' | Jetpack 'lambdalisue/fern-git-status.vim'
+" Jetpack 'lambdalisue/fern.vim',{'branch':'main'} | Jetpack 'lambdalisue/fern-hijack.vim' | Jetpack 'lambdalisue/fern-renderer-nerdfont.vim' | Jetpack 'lambdalisue/glyph-palette.vim'
+" Jetpack 'yuki-yano/fern-preview.vim' | Jetpack 'lambdalisue/fern-git-status.vim'
 Jetpack 'neovim/nvim-lspconfig'
 Jetpack 'glepnir/lspsaga.nvim', {'branch' : 'main'}
 Jetpack 'hrsh7th/vim-vsnip' | Jetpack 'hrsh7th/vim-vsnip-integ'
@@ -39,6 +39,7 @@ Jetpack 'williamboman/mason.nvim'
 Jetpack 'williamboman/mason-lspconfig.nvim'
 "Jetpack 'rmagatti/goto-preview'
 Jetpack 'kyazdani42/nvim-web-devicons'
+Jetpack 'kyazdani42/nvim-tree.lua'
 Jetpack 'akinsho/bufferline.nvim'
 Jetpack 'nvim-lualine/lualine.nvim'
 Jetpack 'nvim-treesitter/nvim-treesitter', {'do':':TSUpdate'}
@@ -74,12 +75,12 @@ Jetpack 'akinsho/toggleterm.nvim'
 Jetpack 'folke/todo-comments.nvim'
 Jetpack 'norcalli/nvim-colorizer.lua'
 Jetpack 'iamcco/markdown-preview.nvim', {'do': 'cd app && yarn install'}
-Jetpack 'j-hui/fidget.nvim'
+"Jetpack 'j-hui/fidget.nvim'
 Jetpack 'kevinhwang91/nvim-hlslens'
 Jetpack 'petertriho/nvim-scrollbar'
 Jetpack 'folke/lsp-colors.nvim'
 "language plugins
-Jetpack 'simrat39/rust-tools.nvim'
+Jetpack 'simrat39/rust-tools.nvim', {'for':'rust'}
 "themes
 Jetpack 'ulwlu/elly.vim'
 Jetpack 'arcticicestudio/nord-vim'
