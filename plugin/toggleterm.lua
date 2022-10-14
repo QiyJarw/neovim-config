@@ -1,3 +1,14 @@
+local term = require("toggleterm.terminal").Terminal
+local lazygit = term:new({
+	cmd = "lazygit",
+	direction = "float",
+	hidden = true
+})
+
+function _lazygit_toggle()
+	lazygit:toggle()
+end
+
 require('toggleterm').setup{
 	size = 12, -- ターミナルのサイズ
 	open_mapping = "<c-t>",
@@ -23,3 +34,4 @@ require('toggleterm').setup{
 	}
 }
 vim.api.nvim_set_keymap('t','jj','<C-\\><C-n>',{noremap = true})
+vim.keymap.set("n","<leader>lg",_lazygit_toggle, {noremap = true, silent = true})

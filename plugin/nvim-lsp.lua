@@ -72,7 +72,7 @@ require('mason-lspconfig').setup_handlers({
 			}
 		}
 	 end
-	 if server_name == "rust_analyzer" then
+	 if server_name == "rust-analyzer" then
 		 require'rust-tools'.setup({
 			 server = {
 				 on_attach = opts.on_attach

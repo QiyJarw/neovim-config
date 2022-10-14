@@ -60,6 +60,7 @@ Jetpack 'lukas-reineke/indent-blankline.nvim'
 Jetpack 'cohama/lexima.vim'
 Jetpack 'wellle/targets.vim'
 Jetpack 'tpope/vim-fugitive'
+Jetpack 'kdheepak/lazygit.nvim'
 " Jetpack 'airblade/vim-gitgutter'
 Jetpack 'lewis6991/gitsigns.nvim'
 Jetpack 'MattesGroeger/vim-bookmarks'
@@ -80,7 +81,7 @@ Jetpack 'kevinhwang91/nvim-hlslens'
 Jetpack 'petertriho/nvim-scrollbar'
 Jetpack 'folke/lsp-colors.nvim'
 "language plugins
-Jetpack 'simrat39/rust-tools.nvim', {'for':'rust'}
+Jetpack 'simrat39/rust-tools.nvim' 
 "themes
 Jetpack 'ulwlu/elly.vim'
 Jetpack 'arcticicestudio/nord-vim'

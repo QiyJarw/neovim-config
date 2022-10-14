@@ -11,6 +11,7 @@ require("nvim-tree").setup()
 require("nvim-tree").setup({
   sort_by = "case_sensitive",
   view = {
+	hide_root_folder = true,
     adaptive_size = true,
     mappings = {
       list = {
@@ -20,9 +21,16 @@ require("nvim-tree").setup({
   },
   renderer = {
     group_empty = true,
+	  icons = {
+		  git_placement = "after"
+	  },
   },
   filters = {
-    dotfiles = true,
+    dotfiles = false,
+  },
+  diagnostics = {
+	  enable = true,
+	  show_on_dirs = true
   },
 })
 

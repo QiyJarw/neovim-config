@@ -1,21 +1,14 @@
 --telescope設定
 local cmd = require('telescope.builtin')
+local action = require('telescope.actions')
 
 require('telescope').setup{
   defaults = {
-	  -- mappings = {
-		  -- i = {
-			  -- -- ["<leader>ff"] = cmd.find_files,
-			  -- -- ["<leader>fb"] = cmd.buffers,
-			  -- -- ["<leader>fg"] = cmd.live_grep,
-			  -- -- ["<leader>gc"] = cmd.git_commits,
-			  -- -- ["<leader>gh"] = cmd.help_tags,
-			  -- -- ["<leader>m"] =  ext.vim_bookmarks.current_file,
-			  -- -- ["<leader>M"] =  ext.vim_bookmarks.all,
-			  -- -- ["<leader>z"] = ext.zoxide.list,
-			  -- -- ["<leader>as"] = require('session-lens').search_session
-		  -- }
-	-- }
+	  mappings = {
+		  n = {
+			  ["q"] = action.close,
+		  }
+		}
     },
   pickers = {
     find_files = {
