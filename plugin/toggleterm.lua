@@ -1,6 +1,7 @@
 local term = require("toggleterm.terminal").Terminal
 local lazygit = term:new({
 	cmd = "lazygit",
+	count = 2,
 	direction = "float",
 	hidden = true
 })
@@ -12,6 +13,7 @@ end
 require('toggleterm').setup{
 	size = 12, -- ターミナルのサイズ
 	open_mapping = "<c-t>",
+	count = 1,
 	hide_numbers = true,
 	-- shade_filetypes = {},
 	shade_terminals = true,
@@ -24,9 +26,9 @@ require('toggleterm').setup{
 	-- float ウィンドウ時の設定
 	float_opts = {
 		border = 'curved',
-		width = 120,
-		height = 30,
-		winblend = 0, --custom promptが崩れるため0に設定
+		width = 240,
+		height = 80,
+		winblend = 13, --custom promptが崩れるため0に設定
 		highlights = {
 			border = "Normal",
 			background = "Normal"
