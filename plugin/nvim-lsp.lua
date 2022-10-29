@@ -84,7 +84,8 @@ require('mason-lspconfig').setup_handlers({
 })
 
  --capabilitiesを拡張
- local capabilities = vim.lsp.protocol.make_client_capabilities()
- capabilities.textDocument.completion.completionItem.snippetSupport = true
- capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
+ -- local capabilities = vim.lsp.protocol.make_client_capabilities()
+ -- capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
+capabilities.textDocument.completion.completionItem.snippetSupport = true
 -- capabilities = vim.tbl_extend('keep', capabilities or {}, lsp_status.capabilities)
