@@ -14,7 +14,7 @@ require('mason').setup{
 		}
 	}
 }
-local lspconfig= require('lspconfig')
+local lspconfig = require('lspconfig')
 -- local lsp_status = require('lsp-status')
 -- lsp_status.register_progress()
 
@@ -63,7 +63,7 @@ require('mason-lspconfig').setup_handlers({
 	   -- vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, bufopts)
 	   vim.keymap.set('n','<space>ca',"<cmd>Lspsaga code_action<CR>",bufopts)
 	   -- vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
-	   vim.keymap.set('n', '<space>f', vim.lsp.buf.formatting, bufopts)
+	   vim.keymap.set('n', '<space>f', function() vim.lsp.buf.format {async = true} end, bufopts)
 	 end
 	 if server_name == "sumneko_lua" then
 	 	opts.settings = {
