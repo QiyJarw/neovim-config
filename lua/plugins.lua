@@ -1,4 +1,4 @@
---TODO: 動作が安定するようならrepoにpushする。
+-- TODO: 動作が安定するようならrepoにpushする。
 local jetpackfile = vim.fn.findfile("jetpack.vim", vim.fn.stdpath("data") .. "/site/pack/jetpack/opt/vim-jetpack/plugin")
 local jetpackurl = 'https://githubusercontent.com/tani/vim-jetpack/master/plugin/jetpack.vim'
 
@@ -21,6 +21,7 @@ end
 vim.cmd([[
 packadd vim-jetpack
 call jetpack#begin(stdpath('data') . '/plugs/')
+Jetpack 'tani/vim-jetpack', {'opt': 1}
 Jetpack 'vim-jp/vimdoc-ja'
 Jetpack 'nvim-lua/plenary.nvim' "deps on telescope
 Jetpack 'nvim-lua/popup.nvim'
