@@ -1,10 +1,10 @@
 vim.cmd([[
-call plug#begin(stdpath('config') . '/plugs/')
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-commentary'
-Plug 'phaazon/hop.nvim'
-
-call plug#end()
+-- packadd vim-jetpack
+-- call jetpack#begin(stdpath('config') . '/plugs/')
+-- Jetpack 'tpope/vim-surround'
+-- Jetpack 'tpope/vim-commentary'
+-- Jetpack 'phaazon/hop.nvim'
+-- call jetpack#end()
 ]])
 
 --settings
