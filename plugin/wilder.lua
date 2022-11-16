@@ -1,4 +1,5 @@
-local wilder = require("wilder")
+local status, wilder = pcall(require, "wilder")
+if ( not status ) then return end
 
 local gradient = {
   '#f4468f', '#fd4a85', '#ff507a', '#ff566f', '#ff5e63',
@@ -12,18 +13,28 @@ for i, fg in ipairs(gradient) do
 end
 
 wilder.set_option('renderer', wilder.popupmenu_renderer(
-	wilder.popupmenu_border_theme({
-		pumblend = 13,
-		highlights  = {
-			gradient = gradient,
-		},
-		highlighter = wilder.highlighter_with_gradient({
-			wilder.basic_highlighter()
-		}),
+	-- wilder.popupmenu_border_theme({
+	-- 	pumblend = 13,
+	-- 	highlights  = {
+	-- 		gradient = gradient,
+	-- 	},
+	-- 	highlighter = wilder.highlighter_with_gradient({
+	-- 		wilder.basic_highlighter()
+	-- 	}),
+	-- 	border = 'rounded',
+	-- 	left = {' ', wilder.popupmenu_devicons()},
+	-- 	right = {' ', wilder.popupmenu_scrollbar()}
+	-- })
+	wilder.popupmenu_palette_theme({
 		border = 'rounded',
+		max_height = '50%',
+		min_height = 0,
+		prompt_position = 'top',
+		reverse = 0,
 		left = {' ', wilder.popupmenu_devicons()},
-		right = {' ', wilder.popupmenu_scrollbar()}
+		right = {' ', wilder.popupmenu_scrollbar()},
 	})
 ))
 
-wilder.setup({modes = {':','/','?'}})
+if vim.g.vscode then return end --vscode-neovimでは設定しない
+wilder.setup({ modes = {':','/','?'}})

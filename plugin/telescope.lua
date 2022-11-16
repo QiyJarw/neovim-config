@@ -1,15 +1,28 @@
 --telescope設定
-local cmd = require('telescope.builtin')
-local action = require('telescope.actions')
+local telescopeStatus, telescope = pcall(require, "telescope")
+if ( not telescopeStatus ) then return end
 
-require('telescope').setup{
+local builtin = require("telescope.builtin")
+local actions = require("telescope.actions")
+local themes = require("telescope.themes")
+
+local sessionStatus, sessionLens = pcall(require, "session-lens")
+if ( not sessionStatus ) then return end
+
+telescope.setup {
   defaults = {
 	  mappings = {
+		  i = {
+			  ["<c-q>"] = actions.close,
+			  ["<c-j>"] = actions.move_selection_next,
+			  ["<c-k>"] = actions.move_selection_previous
+		  },
 		  n = {
-			  ["q"] = action.close,
+			  ["q"] = actions.close,
 		  }
 		}
     },
+
   pickers = {
     find_files = {
     },
@@ -28,37 +41,45 @@ require('telescope').setup{
 
   },
 	extensions = {
+		file_browser = {
+			hijack_netrw = true,
+		},
 		fzf = {
 			fuzzy = true
 		},
 		["ui-select"] = {
-			require('telescope.themes').get_dropdown {
+			themes.get_dropdown {
 
 			}
 		}
 	}
 }
 
-require('telescope').load_extension('fzf')
-require('telescope').load_extension('zoxide')
-require('telescope').load_extension('vim_bookmarks')
-require('telescope').load_extension('session-lens')
-require('telescope').load_extension('ui-select')
-
-local ext = require('telescope').extensions
+telescope.load_extension('ui-select')
+telescope.load_extension('file_browser')
+telescope.load_extension('fzf')
+telescope.load_extension('zoxide')
+-- telescope.load_extension('vim_bookmarks')
 
 --keymappings
-local opts = {noremap = true}
-vim.keymap.set('n','<Leader>ff',cmd.find_files,opts)
-vim.keymap.set('n','<Leader>fb',cmd.buffers,opts)
-vim.keymap.set('n','<Leader>fg',cmd.live_grep,opts)
-vim.keymap.set('n','<Leader>fh',cmd.help_tags,opts)
-vim.keymap.set('n','<Leader>gc',cmd.git_commits,opts)
-vim.keymap.set('n','<Leader>gs',cmd.git_status,opts)
-vim.keymap.set('n','<Leader>d',cmd.diagnostics,opts)
-vim.keymap.set('n','<Leader>:',cmd.commands,opts)
+local opts = {noremap = true, silent = true}
+vim.keymap.set('n','<Leader>ff',builtin.find_files,opts)
+vim.keymap.set('n','<Leader>F',telescope.extensions.file_browser.file_browser,opts)
+vim.keymap.set('n','<Leader>fb',builtin.buffers,opts)
+vim.keymap.set('n','<Leader>fg',builtin.live_grep,opts)
+vim.keymap.set('n','<Leader>fh',builtin.help_tags,opts)
+vim.keymap.set('n','<Leader>gc',builtin.git_commits,opts)
+vim.keymap.set('n','<Leader>gs',builtin.git_status,opts)
+vim.keymap.set('n','<Leader>d',builtin.diagnostics,opts)
+vim.keymap.set('n','<Leader>:',builtin.commands,opts)
 vim.keymap.set('n','<Leader>t','<cmd>TodoTelescope<CR>',opts)
-vim.api.nvim_set_keymap('n','<Leader>z','<cmd>Telescope zoxide list<CR>',opts)
-vim.keymap.set('n','<Leader>os',"<cmd>lua require('session-lens').search_session()<CR>",opts)
-vim.keymap.set('n','<Leader>m',ext.vim_bookmarks.current_file,opts)
-vim.keymap.set('n','<Leader>M',ext.vim_bookmarks.all,opts)
+vim.keymap.set('n','<Leader>z',telescope.extensions.zoxide.list,opts)
+vim.keymap.set('n','<Leader>os',sessionLens.search_session,opts)
+-- vim.keymap.set('n','<Leader>m',ext.vim_bookmarks.current_file,opts)
+-- vim.keymap.set('n','<Leader>M',ext.vim_bookmarks.all,opts)
+
+-- previewerで改行をする
+vim.api.nvim_create_autocmd('User',{
+	pattern = 'TelescopePreviewerLoaded',
+	callback = function () vim.opt_local.wrap = true end
+})

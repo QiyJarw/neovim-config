@@ -1,9 +1,33 @@
-require"nvim-gps".setup{
+local navicStatus, navic = pcall(require, "nvim-navic")
+if ( not navicStatus ) then return end
+
+navic.setup{
 	icons = {
-			["class-name"] = ' ',      -- Classes and class-like objects
-			["function-name"] = ' ',   -- Functions
-			["method-name"] = ' ',     -- Methods (functions inside class-like objects)
-			["container-name"] = '⛶ ',  -- Containers (example: lua tables)
-			["tag-name"] = '炙'         -- Tags (example: html tags)
+		File          = " ",
+        Module        = " ",
+        Namespace     = " ",
+        Package       = " ",
+        Class         = " ",
+        Method        = " ",
+        Property      = " ",
+        Field         = " ",
+        Constructor   = " ",
+        Enum          = "練",
+        Interface     = "練",
+        Function      = " ",
+        Variable      = " ",
+        Constant      = " ",
+        String        = " ",
+        Number        = " ",
+        Boolean       = "◩ ",
+        Array         = " ",
+        Object        = " ",
+        Key           = " ",
+        Null          = "ﳠ ",
+        EnumMember    = " ",
+        Struct        = " ",
+        Event         = " ",
+        Operator      = " ",
+        TypeParameter = " ",
 		},
 }

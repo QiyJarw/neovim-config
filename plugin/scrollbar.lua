@@ -1,5 +1,11 @@
-require("scrollbar.handlers.search").setup()
-require("scrollbar").setup({
+local scrollbarStatus, scrollbar = pcall(require, "scrollbar")
+if ( not scrollbarStatus ) then return end
+
+local handlersStatus, scrollbarHandlersSearch = pcall(require, "scrollbar.handlers.search")
+if ( not handlersStatus ) then return end
+
+scrollbarHandlersSearch.setup()
+scrollbar.setup({
 	handle = {
 		color = "#3a4659"
 	},

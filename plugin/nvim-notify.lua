@@ -1,5 +1,8 @@
-require"notify".setup{
-	timeput = 3000,
+local status, notify = pcall(require, "notify")
+if ( not status ) then return end
+
+notify.setup{
+	timeput = 300,
 	stages = "fade"
 }
 -- Utility functions shared between progress reports for LSP and DAP

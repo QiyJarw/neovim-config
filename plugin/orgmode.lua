@@ -1,10 +1,16 @@
 -- init.lua
 
 -- Load custom tree-sitter grammar for org filetype
+local orgStatus, orgmode = pcall(require, "orgmode")
+if ( not orgStatus ) then return end
+
+local nvimTreesitterStatus, nvimTreeSitter = pcall(require, "nvim-treesitter.config")
+if ( not nvimTreesitterStatus ) then return end
+
 require('orgmode').setup_ts_grammar()
 
 -- Tree-sitter configuration
-require'nvim-treesitter.configs'.setup {
+nvimTreeSitter.setup {
   -- If TS highlights are not enabled at all, or disabled via `disable` prop, highlighting will fallback to default Vim syntax highlighting
   highlight = {
     enable = true,
@@ -14,7 +20,7 @@ require'nvim-treesitter.configs'.setup {
   ensure_installed = {'org'}, -- Or run :TSUpdate org
 }
 
-require('orgmode').setup({
+orgmode.setup({
   -- org_agenda_files = {'G:\マイドライブ\doc\notes\', '~/my-orgs/**/*'},
   -- org_default_notes_file = '~/Dropbox/org/refile.org',
 })

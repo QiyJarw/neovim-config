@@ -1,14 +1,12 @@
--- examples for your init.lua
+local status, nvimTree = pcall(require,"nvim-tree")
+if ( not status ) then return end
 
 -- disable netrw at the very start of your init.lua (strongly advised)
 vim.g.loaded = 1
 vim.g.loaded_netrwPlugin = 1
 
--- empty setup using defaults
-require("nvim-tree").setup()
-
 -- OR setup with some options
-require("nvim-tree").setup({
+nvimTree.setup({
   sort_by = "case_sensitive",
   view = {
 	hide_root_folder = true,
@@ -34,4 +32,4 @@ require("nvim-tree").setup({
   },
 })
 
-vim.keymap.set('n','<space>b','<cmd>NvimTreeToggle<CR>',{silent = true, noremap = true})
+vim.keymap.set('n','<leader>b','<cmd>NvimTreeToggle<CR>',{silent = true, noremap = true})

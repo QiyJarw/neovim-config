@@ -1,4 +1,6 @@
-local dap = require('dap')
+local status, dap = pcall(require, "dap")
+if ( not status ) then return end
+
 dap.adapters.lldb = {
   type = 'executable',
   command = '/home/linuxbrew/.linuxbrew/bin/lldb-vscode', -- adjust as needed, must be absolute path

@@ -1,4 +1,10 @@
-local term = require("toggleterm.terminal").Terminal
+local toggleStatus, toggleTerm = pcall(require, "toggleterm")
+if ( not toggleStatus ) then return end
+
+local termStatus, terminal = pcall(require, "toggleterm.terminal")
+if ( not termStatus ) then return end
+
+local term = terminal.Terminal
 local lazygit = term:new({
 	cmd = "lazygit",
 	count = 2,
@@ -10,7 +16,7 @@ function _lazygit_toggle()
 	lazygit:toggle()
 end
 
-require('toggleterm').setup{
+toggleTerm.setup{
 	size = 12, -- ターミナルのサイズ
 	open_mapping = "<c-t>",
 	count = 1,
@@ -35,5 +41,5 @@ require('toggleterm').setup{
 		}
 	}
 }
-vim.api.nvim_set_keymap('t','jj','<C-\\><C-n>',{noremap = true})
+vim.keymap.set('t','jj','<C-\\><C-n>',{noremap = true})
 vim.keymap.set("n","<leader>lg",_lazygit_toggle, {noremap = true, silent = true})
