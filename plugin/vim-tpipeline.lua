@@ -1,0 +1,5 @@
+-- tmuxが起動しているときのみ
+-- if vim.env.TMUX ~= nil then
+-- 	vim.o.laststatus = 0 --ステータスラインを表示しない
+-- 	vim.o.cmdheight = 0 --コマンドラインを表示しない
+-- end
