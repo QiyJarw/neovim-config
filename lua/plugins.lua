@@ -42,7 +42,6 @@ Jetpack 'kyazdani42/nvim-web-devicons'
 Jetpack 'akinsho/bufferline.nvim'
 Jetpack 'nvim-lualine/lualine.nvim'
 Jetpack 'nvim-treesitter/nvim-treesitter', {'do':':TSUpdate'}
-"Jetpack 'SmiteshP/nvim-gps'
 Jetpack 'SmiteshP/nvim-navic'
 if has('nvim')
   function! UpdateRemotePlugins(...)
