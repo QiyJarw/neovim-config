@@ -89,6 +89,7 @@ Jetpack 'iamcco/markdown-preview.nvim', {'do': 'cd app && yarn install'}
 "Jetpack 'j-hui/fidget.nvim'
 Jetpack 'kevinhwang91/nvim-hlslens'
 Jetpack 'petertriho/nvim-scrollbar'
+Jetpack 'karb94/neoscroll.nvim'
 Jetpack 'folke/lsp-colors.nvim'
 "Jetpack 'vimpostor/vim-tpipeline'
 "language plugins
