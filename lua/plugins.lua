@@ -18,7 +18,7 @@ end
 --plugs settings
 vim.cmd([[
 packadd vim-jetpack
-call jetpack#begin(stdpath('data') . '/plugs/')
+call jetpack#begin(stdpath('data') . '/plugs')
 Jetpack 'tani/vim-jetpack', {'opt': 1}
 Jetpack 'vim-jp/vimdoc-ja'
 Jetpack 'nvim-lua/plenary.nvim' "deps on telescope
@@ -43,6 +43,7 @@ Jetpack 'akinsho/bufferline.nvim'
 Jetpack 'nvim-lualine/lualine.nvim'
 Jetpack 'nvim-treesitter/nvim-treesitter', {'do':':TSUpdate'}
 Jetpack 'SmiteshP/nvim-navic'
+Jetpack 'utilyre/barbecue.nvim'
 if has('nvim')
   function! UpdateRemotePlugins(...)
     " Needed to refresh runtime files
