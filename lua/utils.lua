@@ -1,3 +1,6 @@
+if vim.fn.exists("neovide") then
+	vim.opt.guifont = { "HackGenNerd Console", "h8" } -- fontの設定
+end
 -- コメントの改行を防ぐ
 vim.api.nvim_create_autocmd('filetype', {
 	pattern = "*",
