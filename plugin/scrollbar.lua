@@ -6,6 +6,7 @@ if ( not handlersStatus ) then return end
 
 scrollbarHandlersSearch.setup()
 scrollbar.setup({
+	hide_if_all_visible = true,
 	handle = {
 		color = "#3a4659"
 	},
