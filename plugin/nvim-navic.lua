@@ -42,3 +42,5 @@ barbecue.setup {
 	},
 	kinds = contextIcons
 }
+
+vim.api.nvim_set_hl(0, "NavicText", {default = false, fg = "#7ba2c9"})
