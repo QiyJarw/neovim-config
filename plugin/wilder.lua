@@ -8,9 +8,9 @@ local gradient = {
   '#c8d43a', '#bfde43', '#b6e84e', '#aff05b'
 }
 
-for i, fg in ipairs(gradient) do
-  gradient[i] = wilder.make_hl('WilderGradient' .. i, 'Pmenu', {{a = 1}, {a = 1}, {foreground = fg}})
-end
+-- for i, fg in ipairs(gradient) do
+--   gradient[i] = wilder.make_hl('WilderGradient' .. i, 'Pmenu', {{a = 1}, {a = 1}, {foreground = fg}})
+-- end
 
 wilder.set_option('renderer', wilder.popupmenu_renderer(
 	-- wilder.popupmenu_border_theme({

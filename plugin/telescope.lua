@@ -9,6 +9,11 @@ local themes = require("telescope.themes")
 local sessionStatus, sessionLens = pcall(require, "session-lens")
 if ( not sessionStatus ) then return end
 
+telescope.load_extension('ui-select')
+telescope.load_extension('file_browser')
+telescope.load_extension('fzf')
+telescope.load_extension('zoxide')
+
 telescope.setup {
   defaults = {
 	  mappings = {
@@ -54,12 +59,6 @@ telescope.setup {
 		}
 	}
 }
-
-telescope.load_extension('ui-select')
-telescope.load_extension('file_browser')
-telescope.load_extension('fzf')
-telescope.load_extension('zoxide')
--- telescope.load_extension('vim_bookmarks')
 
 --keymappings
 local opts = {noremap = true, silent = true}
