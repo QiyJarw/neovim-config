@@ -1,6 +1,3 @@
-local sagaStatus, saga = pcall(require, "lspsaga")
-if (not sagaStatus) then return end
-
 local masonStatus, mason = pcall(require, "mason")
 if (not masonStatus) then return end
 
@@ -13,18 +10,32 @@ if (not lspStatus) then return end
 local masonLspStatus, masonLspConfig = pcall(require, "mason-lspconfig")
 if (not masonLspStatus) then return end
 
+local sagaStatus, saga = pcall(require, "lspsaga")
+if (not sagaStatus) then return end
+
 local navicStatus, navic = pcall(require, "nvim-navic")
 if ( not navicStatus ) then return end
 
 local rustStatus, rustTools = pcall(require, "rust-tools")
 if not rustStatus then return end
 
-saga.init_lsp_saga({
-	border_style = "rounded",
-	code_action_icon = "",
-	rename_action_quit = "<Esc>"
+
+saga.setup({
+	ui = {
+		theme = "round",
+		title = false,
+		border = "rounded",
+		code_action = ""
+	},
+	rename = {
+		quit = "<Esc>"
+	},
+	symbol_in_winbar = {
+		enable = false,
+	  },
 })
 
+-- vim.wo.winbar = require('lspsaga.symbolwinbar'):get_winbar()
 mason.setup {
 	ui = {
 		icons = {
@@ -77,6 +88,7 @@ masonLspConfig.setup_handlers({
 			-- vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
 			vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
 			vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
+			vim.keymap.set('n','<space>ol','<cmd>Lspsaga outline<CR>')
 			vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, bufopts)
 			vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, bufopts)
 			vim.keymap.set('n', '<space>wl', function()
