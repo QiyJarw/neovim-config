@@ -10,7 +10,7 @@ if ( not autoTagStatus ) then return end
 
 install.compilers={"gcc"}
 configs.setup {
-	ensure_installed = { "c","html","javascript","tsx","css","c_sharp","vim","lua","rust", "markdown" },
+	ensure_installed = { "c","html","javascript","tsx","css","c_sharp","vim","lua","rust", "markdown", "markdown_inline"},
 	highlight = {
 		enable = true,
 		}
