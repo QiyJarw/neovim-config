@@ -5,20 +5,25 @@ local lspStatus, lspkind = pcall(require, "lspkind")
 if ( not lspStatus ) then return end
 
 cmp.setup({
-	snippet = {
-		expand = function(args)
-			vim.fn["vsnip#anonymous"](args.body)
-		end,
-	},
 	formatting = {
 		format = lspkind.cmp_format({
-			with_text = true,
+			mode = 'symbol_text',
+			menu = {
+				buffer = "[buffer]",
+				nvim_lsp = "[LSP]",
+			},
 			maxwidth = 50,
+			ellipsis_char = '...',
 			before = function (entry, vim_item)
 				-- ...
 				return vim_item
 			end
 		})
+	},
+	snippet = {
+		expand = function(args)
+			vim.fn["vsnip#anonymous"](args.body)
+		end,
 	},
 	window = {
 		documentation = cmp.config.window.bordered()

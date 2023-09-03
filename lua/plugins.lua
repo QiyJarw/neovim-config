@@ -81,7 +81,7 @@ Jetpack 'nvim-telescope/telescope-file-browser.nvim'
 Jetpack 'nvim-telescope/telescope-fzf-native.nvim',{'do':'make'}
 Jetpack 'nvim-telescope/telescope-ui-select.nvim'
 Jetpack 'jvgrootveld/telescope-zoxide'
-"Jetpack 'tom-anders/telescope-vim-bookmarks.nvim'
+Jetpack 'tom-anders/telescope-vim-bookmarks.nvim'
 Jetpack 'chentoast/marks.nvim'
 Jetpack 'goolord/alpha-nvim'
 Jetpack 'nvim-orgmode/orgmode'

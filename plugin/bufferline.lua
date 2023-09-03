@@ -18,7 +18,7 @@ bufferline.setup {
 			icon = '▎',
 			style = 'none'
 		},
-		buffer_close_icon = '',
+		buffer_close_icon = '',
 		modified_icon = '●',
 		close_icon = '',
 		left_trunc_marker = '',
@@ -81,28 +81,28 @@ bufferline.setup {
 				toggle_hidden_on_enter = true -- when you re-enter a hidden group this options re-opens that group so the buffer is visible
 			},
 			items = {
-				{
-					name = "Docs",
-					highlight = { undercurl = false, sp = "green" },
-					auto_close = false, -- whether or not close this group if it doesn't contain the current buffer
-					matcher = function(buf)
-						return buf.filename:match('%.md') or buf.filename:match('%.txt')
-					end,
-					separator = { -- Optional
-						style = require('bufferline.groups').separator.pill
-					},
-				},
-				{
-					name = "settings",
-					highlight = { undercurl = false, sp = "green" },
-					auto_close = false, -- whether or not close this group if it doesn't contain the current buffer
-					matcher = function(buf)
-						return buf.filename:match('%.lua')
-					end,
-					separator = { -- Optional
-						style = require('bufferline.groups').separator.pill
-					},
-				}
+				-- {
+				-- 	name = "Docs",
+				-- 	highlight = { undercurl = false, sp = "green" },
+				-- 	auto_close = false, -- whether or not close this group if it doesn't contain the current buffer
+				-- 	matcher = function(buf)
+				-- 		return buf.filename:match('%.md') or buf.filename:match('%.txt')
+				-- 	end,
+				-- 	separator = { -- Optional
+				-- 		style = require('bufferline.groups').separator.pill
+				-- 	},
+				-- },
+				-- {
+				-- 	name = "settings",
+				-- 	highlight = { undercurl = false, sp = "green" },
+				-- 	auto_close = false, -- whether or not close this group if it doesn't contain the current buffer
+				-- 	matcher = function(buf)
+				-- 		return buf.filename:match('%.lua')
+				-- 	end,
+				-- 	separator = { -- Optional
+				-- 		style = require('bufferline.groups').separator.pill
+				-- 	},
+				-- }
 			}
 		}
 	},

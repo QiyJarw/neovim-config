@@ -8,71 +8,129 @@ local uiStatus, dapui = pcall(require, "dapui")
 if (not uiStatus) then return end
 
 mason.setup {}
-masonDap.setup {
+-- masonDap.setup {
+-- 	ensure_installed = { 'cppdbg' },
+-- 	automatic_installation = true,
+-- 	automatic_setup = true
+-- }
+
+masonDap.setup{
 	ensure_installed = { 'cppdbg' },
-	automatic_installation = true,
-	automatic_setup = true
-}
+	handlers = {
+		function(config)
+			masonDap.default_setup(config)
+		end,
+		cppdbg = function(config)
+			config.adapters = {
+				id = "cppdbg", -- necessary for cpptools
+				type = "executable",
+				command = "OpenDebugAD7"
+			}
 
-masonDap.setup_handlers {
-	function(source_name)
-		require('mason-nvim-dap.automatic_setup')(source_name)
-	end,
-	cppdbg = function(source_name)
-		dap.adapters.cppdbg = {
-			id = "cppdbg", -- necessary for cpptools
-			type = "executable",
-			command = "OpenDebugAD7"
-		}
-
-		dap.configurations.cpp = {
-			{
-				name = 'Launch',
-				type = 'cppdbg',
-				request = 'launch',
-				linux = {
+			config.configurations = {
+				{
+					name = 'Launch',
+					type = 'cppdbg',
+					request = 'launch',
+					linux = {
+						MIMode = 'gdb',
+						miDebuggerPath = 'gdb'
+					},
+					osx = {
+						MIMode = 'lldb',
+						miDebuggerPath = 'lldb'
+					},
+					windows = {
+						MIMode = 'gdb',
+						miDebuggerPath = 'gdb'
+					},
+					program = function()
+						return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+					end,
+					cwd = '${workspaceFolder}',
+					stopOnEntry = false,
+					args = function()
+						local arg = {}
+						vim.ui.input({ prompt = 'enter args:', default = '' }, function(input)
+							if input ~= '' then table.insert(arg, input) end
+						end)
+						return arg
+					end
+				},
+				{
+					name = 'Attach to gdbserver :1234',
+					type = 'cppdbg',
+					request = 'launch',
 					MIMode = 'gdb',
-					miDebuggerPath = 'gdb'
+					miDebuggerServerAddress = 'localhost:1234',
+					miDebuggerPath = 'gdb',
+					cwd = '${workspaceFolder}',
+					program = function()
+						return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+					end,
 				},
-				osx = {
-					MIMode = 'lldb',
-					miDebuggerPath = 'lldb'
-				},
-				windows = {
-					MIMode = 'gdb',
-					miDebuggerPath = 'gdb'
-				},
-				program = function()
-					return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
-				end,
-				cwd = '${workspaceFolder}',
-				stopOnEntry = false,
-				args = function()
-					local arg = {}
-					vim.ui.input({ prompt = 'enter args:', default = '' }, function(input)
-						if input ~= '' then table.insert(arg,input) end
-					end)
-					return arg
-				end
-			},
-			{
-				name = 'Attach to gdbserver :1234',
-				type = 'cppdbg',
-				request = 'launch',
-				MIMode = 'gdb',
-				miDebuggerServerAddress = 'localhost:1234',
-				miDebuggerPath = 'gdb',
-				cwd = '${workspaceFolder}',
-				program = function()
-					return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
-				end,
-			},
-		}
+			}
+			masonDap.default_setup(config)
+		end
+	},
+	-- function(source_name)
+	-- 	require('mason-nvim-dap.automatic_setup')(source_name)
+	-- end,
+	-- cppdbg = function(source_name)
+	-- 	dap.adapters.cppdbg = {
+	-- 		id = "cppdbg", -- necessary for cpptools
+	-- 		type = "executable",
+	-- 		command = "OpenDebugAD7"
+	-- 	}
 
-		-- If you want to use this for Rust and C, add something like this:
-		dap.configurations.c = dap.configurations.cpp
-		dap.configurations.rust = dap.configurations.cpp
-	end
+	-- 	dap.configurations.cpp = {
+	-- 		{
+	-- 			name = 'Launch',
+	-- 			type = 'cppdbg',
+	-- 			request = 'launch',
+	-- 			linux = {
+	-- 				MIMode = 'gdb',
+	-- 				miDebuggerPath = 'gdb'
+	-- 			},
+	-- 			osx = {
+	-- 				MIMode = 'lldb',
+	-- 				miDebuggerPath = 'lldb'
+	-- 			},
+	-- 			windows = {
+	-- 				MIMode = 'gdb',
+	-- 				miDebuggerPath = 'gdb'
+	-- 			},
+	-- 			program = function()
+	-- 				return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+	-- 			end,
+	-- 			cwd = '${workspaceFolder}',
+	-- 			stopOnEntry = false,
+	-- 			args = function()
+	-- 				local arg = {}
+	-- 				vim.ui.input({ prompt = 'enter args:', default = '' }, function(input)
+	-- 					if input ~= '' then table.insert(arg,input) end
+	-- 				end)
+	-- 				return arg
+	-- 			end
+	-- 		},
+	-- 		{
+	-- 			name = 'Attach to gdbserver :1234',
+	-- 			type = 'cppdbg',
+	-- 			request = 'launch',
+	-- 			MIMode = 'gdb',
+	-- 			miDebuggerServerAddress = 'localhost:1234',
+	-- 			miDebuggerPath = 'gdb',
+	-- 			cwd = '${workspaceFolder}',
+	-- 			program = function()
+	-- 				return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+	-- 			end,
+	-- 		},
+	-- 	}
+
+	-- 	-- If you want to use this for Rust and C, add something like this:
+	-- 	dap.configurations.c = dap.configurations.cpp
+	-- 	dap.configurations.rust = dap.configurations.cpp
+	-- end
 }
 
 dapui.setup {}
