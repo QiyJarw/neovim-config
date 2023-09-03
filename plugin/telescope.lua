@@ -6,12 +6,12 @@ local builtin = require("telescope.builtin")
 local actions = require("telescope.actions")
 local themes = require("telescope.themes")
 
-local sessionStatus, sessionLens = pcall(require, "session-lens")
+local sessionStatus, sessionLens = pcall(require, "auto-session.session-lens")
 if ( not sessionStatus ) then return end
 
 telescope.load_extension('ui-select')
 telescope.load_extension('file_browser')
-telescope.load_extension('fzf')
+-- telescope.load_extension('fzf')
 telescope.load_extension('zoxide')
 
 telescope.setup {
@@ -49,9 +49,9 @@ telescope.setup {
 		file_browser = {
 			hijack_netrw = true,
 		},
-		fzf = {
-			fuzzy = true
-		},
+		-- fzf = {
+		-- 	fuzzy = true
+		-- },
 		["ui-select"] = {
 			themes.get_dropdown {
 

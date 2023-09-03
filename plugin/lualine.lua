@@ -2,7 +2,7 @@
 -- vim.cmd[[set sessionoptions-=blank]]--空ファイルをセッションに保存しない
 -- require 'tabline'.setup{enable=false}--tablineの設定は無効化
 
-local sessionLibStatus, autoSessionLib = pcall(require, "auto-session-library")
+local sessionLibStatus, autoSessionLib = pcall(require, "auto-session.lib")
 if (not sessionLibStatus) then return end
 
 local lualineStatus, lualine = pcall(require, "lualine")
