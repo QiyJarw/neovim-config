@@ -20,3 +20,5 @@ vim.keymap.set('i','<C-l>','<Right>',opts)
 vim.keymap.set('i','jj','<Esc>',opts)
 vim.keymap.set('n','<Esc><Esc>',':nohlsearch<CR>',opts) --hlslens対策で<cmd>表記ではない
 
+vim.keymap.set('n','<S-l>','<CMD>tabn<CR>',opts)
+vim.keymap.set('n','<S-h>','<CMD>tabp<CR>',opts)
