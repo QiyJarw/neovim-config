@@ -6,32 +6,32 @@ if (not barbecueStatus) then return end
 
 local contextIcons =
 {
-	File          = " ",
+	File          = "󰈙 ",
 	Module        = " ",
-	Namespace     = " ",
+	Namespace     = "󰌗 ",
 	Package       = " ",
-	Class         = " ",
-	Method        = " ",
+	Class         = "󰌗 ",
+	Method        = "󰆧 ",
 	Property      = " ",
 	Field         = " ",
 	Constructor   = " ",
-	Enum          = "練",
-	Interface     = "練",
-	Function      = " ",
-	Variable      = " ",
-	Constant      = " ",
-	String        = " ",
-	Number        = " ",
+	Enum          = "󰕘",
+	Interface     = "󰕘",
+	Function      = "󰊕 ",
+	Variable      = "󰆧 ",
+	Constant      = "󰏿 ",
+	String        = "󰀬 ",
+	Number        = "󰎠 ",
 	Boolean       = "◩ ",
-	Array         = " ",
-	Object        = " ",
-	Key           = " ",
-	Null          = "ﳠ ",
+	Array         = "󰅪 ",
+	Object        = "󰅩 ",
+	Key           = "󰌋 ",
+	Null          = "󰟢 ",
 	EnumMember    = " ",
-	Struct        = " ",
+	Struct        = "󰌗 ",
 	Event         = " ",
-	Operator      = " ",
-	TypeParameter = " ",
+	Operator      = "󰆕 ",
+	TypeParameter = "󰊄 ",
 }
 
 navic.setup { icons = contextIcons }
@@ -43,4 +43,4 @@ barbecue.setup {
 	kinds = contextIcons
 }
 
-vim.api.nvim_set_hl(0, "NavicText", {default = false, fg = "#7ba2c9"})
+vim.api.nvim_set_hl(0, "NavicText", { default = false, fg = "#7ba2c9" })

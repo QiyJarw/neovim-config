@@ -20,12 +20,16 @@ local rustStatus, rustTools = pcall(require, "rust-tools")
 if not rustStatus then return end
 
 
+
 saga.setup({
 	ui = {
 		theme = "round",
 		title = false,
 		border = "rounded",
-		code_action = ""
+		code_action = "",
+		kind = {
+
+		}
 	},
 	rename = {
 		quit = "<Esc>"
@@ -50,7 +54,7 @@ mason.setup {
 -- lsp_status.register_progress()
 
 --表示するdiagnosticのアイコン変更
-local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
+local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
 for type, icon in pairs(signs) do
 	local hl = "DiagnosticSign" .. type
 	vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
@@ -84,7 +88,7 @@ masonLspConfig.setup_handlers({
 			vim.keymap.set('n', 'K', "<cmd>Lspsaga hover_doc<CR>", bufopts)
 			vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
 			vim.keymap.set('n', 'gd', "<cmd>Lspsaga peek_definition<CR>", keyopts)
-			vim.keymap.set('n', 'gh', '<cmd>Lspsaga lsp_finder<CR>', bufopts)
+			vim.keymap.set('n', 'gh', '<cmd>Lspsaga finder<CR>', bufopts)
 			-- vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
 			vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
 			vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
@@ -95,7 +99,8 @@ masonLspConfig.setup_handlers({
 				print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
 			end, bufopts)
 			vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, bufopts)
-			vim.keymap.set('n', '<space>r', vim.lsp.buf.rename, bufopts)
+			-- vim.keymap.set('n', '<space>r', vim.lsp.buf.rename, bufopts)
+			vim.keymap.set('n','<space>r', '<cmd>Lspsaga rename<CR>',bufopts)
 			-- vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, bufopts)
 			vim.keymap.set('n', '<space>ca', "<cmd>Lspsaga code_action<CR>", bufopts)
 			-- vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
