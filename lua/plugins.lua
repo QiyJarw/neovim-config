@@ -1,6 +1,6 @@
 -- TODO: 動作が安定するようならrepoにpushする。
-local jetpackfile = vim.fn.findfile("jetpack.vim", vim.fn.stdpath("data") .. "/site/pack/jetpack/opt/vim-jetpack/plugin")
-local jetpackurl = 'https://githubusercontent.com/tani/vim-jetpack/master/plugin/jetpack.vim'
+local jetpackfile = vim.fn.stdpath("data") .. "/site/pack/jetpack/opt/vim-jetpack/plugin/jetpack.vim"
+local jetpackurl = 'https://raw.githubusercontent.com/tani/vim-jetpack/main/plugin/jetpack.vim'
 
 --[[plug.vim本体の確認]]
 if vim.fn.filereadable(jetpackfile) == 0 then
@@ -12,7 +12,7 @@ if vim.fn.filereadable(jetpackfile) == 0 then
 		-- vim.api.nvim_command([[!sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim']])
 		vim.fn.system('curl -fsSLo ' .. jetpackfile .. ' --create-dirs ' .. jetpackurl)
 
-		--vim.api.nvim_command('JetpackSync')
+		vim.api.nvim_command('JetpackSync')
 	end
 end
 --plugs settings
