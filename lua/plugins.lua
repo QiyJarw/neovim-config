@@ -11,10 +11,9 @@ if vim.fn.filereadable(jetpackfile) == 0 then
 	elseif vim.fn.has("unix") == 1 or vim.fn.has("mac") == 1 then --unix系統の場合
 		-- vim.api.nvim_command([[!sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim']])
 		vim.fn.system(string.format('curl -fsSLo %s --create-dirs %s',jetpackfile,jetpackurl))
-
-		vim.api.nvim_command('JetpackSync')
 	end
 end
+
 --plugs settings
 vim.cmd([[
 packadd vim-jetpack
@@ -118,6 +117,13 @@ Jetpack 'talha-akram/noctis.nvim'
 call jetpack#end()
 ]])
 
+local jetpack = require('jetpack')
+for _, name in ipairs(jetpack.names()) do
+  if not jetpack.tap(name) then
+    jetpack.sync()
+    break
+  end
+end
 -- local config = vim.fn.split(vim.fn.glob(vim.fn.stdpath('config') .. '/lua/plugins/' .. '*.lua'))
 -- for _, plg in ipairs(config) do
 -- 	local ok, _ = pcall(require, 'plugins/' .. vim.fn.fnamemodify(plg, ':t:r'))
