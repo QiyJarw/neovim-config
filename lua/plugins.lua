@@ -45,16 +45,7 @@ Jetpack 'famiu/bufdelete.nvim'
 Jetpack 'nvim-treesitter/nvim-treesitter', {'do':':TSUpdate'}
 Jetpack 'SmiteshP/nvim-navic'
 Jetpack 'utilyre/barbecue.nvim'
-if has('nvim')
-  function! UpdateRemotePlugins(...)
-    " Needed to refresh runtime files
-    let &rtp=&rtp
-    UpdateRemotePlugins
-  endfunction
-  Jetpack 'gelguy/wilder.nvim', { 'do': function('UpdateRemotePlugins') }
-else
-  Jetpack 'gelguy/wilder.nvim'
-endif
+Jetpack 'gelguy/wilder.nvim'
 "Jetpack 'nvim-lua/lsp-status.nvim'
 Jetpack 'mattn/emmet-vim'
 Jetpack 'windwp/nvim-ts-autotag'
