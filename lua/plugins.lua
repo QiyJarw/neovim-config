@@ -97,7 +97,6 @@ Jetpack 'folke/lsp-colors.nvim'
 "language plugins
 Jetpack 'simrat39/rust-tools.nvim' 
 "themes
-Jetpack 'ulwlu/elly.vim'
 Jetpack 'arcticicestudio/nord-vim'
 Jetpack 'tomasr/molokai'
 Jetpack 'joshdick/onedark.vim'
