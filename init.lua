@@ -54,7 +54,9 @@ else
 
 	--[[マウス設定]]
 	vim.o.mouse = 'a' --マウスのサポート
-	vim.o.guioptions = '+a' --gui版でのみ有効
+	if vim.fn.has('gui') == 1 then
+		vim.o.guioptions = '+a' --gui版でのみ有効
+	end
 	vim.o.history = 1000 --コマンドの履歴保存
 
 	--[[設定]]
