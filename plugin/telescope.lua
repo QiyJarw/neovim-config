@@ -12,7 +12,7 @@ if ( not sessionStatus ) then return end
 telescope.load_extension('ui-select')
 telescope.load_extension('file_browser')
 -- telescope.load_extension('fzf')
-telescope.load_extension('zoxide')
+-- telescope.load_extension('zoxide')
 
 telescope.setup {
   defaults = {
@@ -72,7 +72,7 @@ vim.keymap.set('n','<Leader>gs',builtin.git_status,opts)
 vim.keymap.set('n','<Leader>d',builtin.diagnostics,opts)
 vim.keymap.set('n','<Leader>:',builtin.commands,opts)
 vim.keymap.set('n','<Leader>t','<cmd>TodoTelescope<CR>',opts)
-vim.keymap.set('n','<Leader>z',telescope.extensions.zoxide.list,opts)
+-- vim.keymap.set('n','<Leader>z',telescope.extensions.zoxide.list,opts)
 vim.keymap.set('n','<Leader>os',sessionLens.search_session,opts)
 -- vim.keymap.set('n','<Leader>m',ext.vim_bookmarks.current_file,opts)
 -- vim.keymap.set('n','<Leader>M',ext.vim_bookmarks.all,opts)
