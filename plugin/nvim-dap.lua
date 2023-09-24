@@ -15,7 +15,7 @@ mason.setup {}
 -- }
 
 masonDap.setup{
-	ensure_installed = { 'cppdbg' },
+	ensure_installed = {},
 	handlers = {
 		function(config)
 			masonDap.default_setup(config)
