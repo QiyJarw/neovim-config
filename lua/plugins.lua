@@ -46,7 +46,7 @@ Jetpack 'nvim-treesitter/nvim-treesitter', {'do': ':lua require(\"nvim-treesitte
 Jetpack 'SmiteshP/nvim-navic'
 Jetpack 'utilyre/barbecue.nvim'
 Jetpack 'gelguy/wilder.nvim'
-Jetpack 'folke/trouble.nvim'
+"Jetpack 'folke/trouble.nvim'
 Jetpack 'rmagatti/auto-session'
 Jetpack 'rmagatti/session-lens'
 Jetpack 'terryma/vim-multiple-cursors'
