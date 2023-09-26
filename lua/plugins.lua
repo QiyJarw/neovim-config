@@ -49,7 +49,7 @@ Jetpack 'gelguy/wilder.nvim'
 "Jetpack 'folke/trouble.nvim'
 Jetpack 'rmagatti/auto-session'
 Jetpack 'rmagatti/session-lens'
-Jetpack 'terryma/vim-multiple-cursors'
+"Jetpack 'terryma/vim-multiple-cursors'
 Jetpack 'tpope/vim-surround'
 "Jetpack 'alvan/vim-closetag',{'for':[ 'html','typescriptreact' ]}
 Jetpack 'tpope/vim-commentary'
