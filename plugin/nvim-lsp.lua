@@ -55,6 +55,10 @@ for type, icon in pairs(signs) do
 	vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
 end
 
+masonLspConfig.setup({
+	automatic_installation = true
+})
+
 masonLspConfig.setup_handlers({
 	function(server_name)
 		local opts = {}
