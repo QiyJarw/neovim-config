@@ -4,7 +4,7 @@ if (not masonStatus) then return end
 local cmpStatus, cmpNvimLsp = pcall(require, "cmp_nvim_lsp")
 if (not cmpStatus) then return end
 
-local lspStatus, lspconfig = pcall(require, "lspconfig")
+local lspStatus, lspConfig = pcall(require, "lspconfig")
 if (not lspStatus) then return end
 
 local masonLspStatus, masonLspConfig = pcall(require, "mason-lspconfig")
@@ -15,11 +15,6 @@ if (not sagaStatus) then return end
 
 local navicStatus, navic = pcall(require, "nvim-navic")
 if ( not navicStatus ) then return end
-
-local rustStatus, rustTools = pcall(require, "rust-tools")
-if not rustStatus then return end
-
-
 
 saga.setup({
 	ui = {
@@ -40,7 +35,7 @@ saga.setup({
 })
 
 -- vim.wo.winbar = require('lspsaga.symbolwinbar'):get_winbar()
-mason.setup {
+mason.setup({
 	ui = {
 		icons = {
 			package_installed = "✅",
@@ -48,7 +43,7 @@ mason.setup {
 			package_uninstalled = "❎"
 		}
 	}
-}
+})
 
 -- local lsp_status = require('lsp-status')
 -- lsp_status.register_progress()
@@ -106,7 +101,7 @@ masonLspConfig.setup_handlers({
 			-- vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
 			vim.keymap.set('n', '<space>fm', function() vim.lsp.buf.format { async = true } end, bufopts)
 		end
-		if server_name == "sumneko_lua" then
+		if server_name == "lua_ls" then
 			opts.settings = {
 				Lua = {
 					diagnostics = { globals = { 'vim' } }
@@ -120,7 +115,7 @@ masonLspConfig.setup_handlers({
 				}
 			})
 		end
-		lspconfig[server_name].setup(opts)
+		lspConfig[server_name].setup(opts)
 	end
 })
 
