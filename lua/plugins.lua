@@ -32,7 +32,7 @@ Jetpack 'glepnir/lspsaga.nvim', {'branch' : 'main'}
 Jetpack 'hrsh7th/vim-vsnip' | Jetpack 'hrsh7th/vim-vsnip-integ'
 Jetpack 'hrsh7th/nvim-cmp'
 Jetpack 'hrsh7th/cmp-nvim-lsp' | Jetpack 'hrsh7th/cmp-vsnip' | Jetpack 'hrsh7th/cmp-buffer'
-Jetpack 'onsails/lspkind-nvim'
+"Jetpack 'onsails/lspkind-nvim'
 "Jetpack 'williamboman/nvim-lsp-installer'
 Jetpack 'mfussenegger/nvim-dap' | Jetpack 'rcarriga/nvim-dap-ui'
 Jetpack 'williamboman/mason.nvim' | Jetpack 'williamboman/mason-lspconfig.nvim' | Jetpack 'jay-babu/mason-nvim-dap.nvim'
@@ -75,7 +75,7 @@ Jetpack 'goolord/alpha-nvim'
 Jetpack 'akinsho/toggleterm.nvim'
 Jetpack 'folke/todo-comments.nvim'
 "Jetpack 'norcalli/nvim-colorizer.lua'
-Jetpack 'iamcco/markdown-preview.nvim', {'do': 'cd app && yarn install'}
+"Jetpack 'iamcco/markdown-preview.nvim', {'do': 'cd app && yarn install'}
 "Jetpack 'j-hui/fidget.nvim'
 Jetpack 'kevinhwang91/nvim-hlslens'
 Jetpack 'petertriho/nvim-scrollbar'
