@@ -112,13 +112,13 @@ masonLspConfig.setup_handlers({
 				}
 			}
 		end
-		if server_name == "rust-analyzer" then
-			rustTools.setup({
-				server = {
-					on_attach = opts.on_attach
-				}
-			})
-		end
+		-- if server_name == "rust-analyzer" then
+		-- 	rustTools.setup({
+		-- 		server = {
+		-- 			on_attach = opts.on_attach
+		-- 		}
+		-- 	})
+		-- end
 		lspConfig[server_name].setup(opts)
 	end
 })
