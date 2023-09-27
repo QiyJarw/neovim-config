@@ -10,6 +10,8 @@ if ( not autoTagStatus ) then return end
 
 configs.setup {
 	ensure_installed = { "vim","lua","markdown", "markdown_inline"},
+	sync_install = true,
+	auto_install = true,
 	highlight = {
 		enable = true,
 		}
