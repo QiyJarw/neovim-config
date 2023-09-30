@@ -30,7 +30,7 @@ saga.setup({
 		quit = "<Esc>"
 	},
 	symbol_in_winbar = {
-		enable = false,
+		enable = true,
 	  },
 })
 
