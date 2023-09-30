@@ -31,7 +31,6 @@ saga.setup({
 	  },
 })
 
--- vim.wo.winbar = require('lspsaga.symbolwinbar'):get_winbar()
 mason.setup({
 	ui = {
 		icons = {
