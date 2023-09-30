@@ -13,9 +13,6 @@ if (not masonLspStatus) then return end
 local sagaStatus, saga = pcall(require, "lspsaga")
 if (not sagaStatus) then return end
 
-local navicStatus, navic = pcall(require, "nvim-navic")
-if ( not navicStatus ) then return end
-
 saga.setup({
 	ui = {
 		theme = "round",
@@ -64,10 +61,6 @@ masonLspConfig.setup_handlers({
 		local opts = {}
 		--language serverが起動したときに呼ばれる関数
 		opts.on_attach = function(client, bufnr)
-			if client.server_capabilities.documentSymbolProvider then
-				navic.attach(client, bufnr)
-			end
-
 			-- Enable completion triggered by <c-x><c-o>
 			vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
