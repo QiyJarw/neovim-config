@@ -32,7 +32,7 @@ Jetpack 'glepnir/lspsaga.nvim', {'branch' : 'main'}
 Jetpack 'hrsh7th/vim-vsnip' | Jetpack 'hrsh7th/vim-vsnip-integ'
 Jetpack 'hrsh7th/nvim-cmp'
 Jetpack 'hrsh7th/cmp-nvim-lsp' | Jetpack 'hrsh7th/cmp-vsnip' | Jetpack 'hrsh7th/cmp-buffer'
-"Jetpack 'onsails/lspkind-nvim'
+Jetpack 'onsails/lspkind-nvim'
 "Jetpack 'williamboman/nvim-lsp-installer'
 Jetpack 'mfussenegger/nvim-dap' | Jetpack 'rcarriga/nvim-dap-ui'
 Jetpack 'williamboman/mason.nvim' | Jetpack 'williamboman/mason-lspconfig.nvim' | Jetpack 'jay-babu/mason-nvim-dap.nvim'
