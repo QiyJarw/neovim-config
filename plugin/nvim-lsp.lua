@@ -106,7 +106,7 @@ masonLspConfig.setup_handlers({
 			-- vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
 			vim.keymap.set('n', '<space>fm', function() vim.lsp.buf.format { async = true } end, bufopts)
 		end
-		if server_name == "sumneko_lua" then
+		if server_name == "lua_ls" then
 			opts.settings = {
 				Lua = {
 					diagnostics = { globals = { 'vim' } }

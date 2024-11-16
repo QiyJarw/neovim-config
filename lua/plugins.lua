@@ -51,7 +51,6 @@ Jetpack 'mattn/emmet-vim'
 Jetpack 'windwp/nvim-ts-autotag'
 Jetpack 'folke/trouble.nvim'
 Jetpack 'rmagatti/auto-session'
-Jetpack 'rmagatti/session-lens'
 Jetpack 'terryma/vim-multiple-cursors'
 Jetpack 'tpope/vim-surround'
 "Jetpack 'alvan/vim-closetag',{'for':[ 'html','typescriptreact' ]}

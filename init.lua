@@ -9,6 +9,7 @@ else
 
 	--[[表示設定]]
 	vim.wo.number = true
+	vim.wo.relativenumber = true
 	vim.o.title = true
 	vim.o.showmatch = true --括弧のジャンプ
 	vim.o.visualbell = false
